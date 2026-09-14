@@ -49,13 +49,14 @@ The photos in `assets/images/` are **interim placeholders** sourced from
 Brandon's own product/founder photography when available — the file names map
 directly to their use:
 
-- `hero-table.jpg` — hero product shot
+- `hero-bg.jpg` — full-bleed cinematic hero background (slow drift)
+- `hero-table.jpg` — framed hero product shot (over the background)
 - `product-*.jpg` — one per catalog item (see `image` field in `products.js`)
 - `founder-craftsman.jpg`, `founder-workshop.jpg` — founders section
 
 Photo credits (Unsplash): Ichsan Chairul, Stephan Coudassot, Lee Campbell,
 Devin Berko, Pascal Meier, Sven Mieke, ASR Design Studio, Ali Mkumbwa,
-Barn Images. Content was rephrased/curated for this project; no changes to the
+Barn Images, Joshua Bartell (hero background). Content was rephrased/curated for this project; no changes to the
 photos themselves beyond resizing.
 
 ## Hosting
