@@ -80,16 +80,13 @@ a { color: inherit; text-decoration: none; }
   display: block; width: 100%; height: 100%;
   filter: drop-shadow(0 0 8px rgba(201,165,77,0.55));
 }
-/* The wavy ribbon draws itself across via stroke-dash */
-#intro-ribbon-path, #intro-ribbon-path-mobile {
+/* Three wavy ribbons draw themselves across in sync (same start + duration) */
+.intro__ribbon {
   stroke-dasharray: 2400;
   stroke-dashoffset: 2400;
   animation: ribbonDraw 2.6s cubic-bezier(0.5, 0, 0.2, 1) forwards;
 }
 @keyframes ribbonDraw { to { stroke-dashoffset: 0; } }
-/* Show the gentle path on desktop, the wavier one on mobile */
-.intro__ribbon-mobile { display: none; }
-.intro__ribbon-desktop { display: inline; }
 
 /* Centered content — lifted above the seam, with a dark halo + gold glow so it
    reads clearly over the ribbon */
@@ -144,8 +141,8 @@ a { color: inherit; text-decoration: none; }
 body.intro-lock { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
-  #intro-ribbon-path, .intro__content, .intro__enter { animation: none; }
-  #intro-ribbon-path { stroke-dashoffset: 0; }
+  .intro__ribbon, .intro__content, .intro__enter { animation: none; }
+  .intro__ribbon { stroke-dashoffset: 0; }
   .intro__content { opacity: 1; }
   .intro__half { transition: none; }
 }
@@ -159,8 +156,7 @@ body.intro-lock { overflow: hidden; }
     height: 260px; left: -55%; right: -55%; width: 210%;
     transform: translateY(-50%) rotate(-38deg); transform-origin: center;
   }
-  .intro__ribbon-desktop { display: none; }
-  .intro__ribbon-mobile { display: inline; }
+  .intro__ribbon { stroke-width: 6; }
   /* Keep the diagonal angle while it clears away on open */
   .intro.is-open .intro__seam { transform: translateY(-50%) rotate(-38deg) scale(1.12); opacity: 0; }
   .intro__content {

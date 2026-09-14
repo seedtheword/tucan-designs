@@ -18,18 +18,18 @@
     var reduceMotion = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Set the dash length to each ribbon's true length so it draws perfectly
-    // (both the desktop and mobile paths exist; CSS shows the right one)
-    ['intro-ribbon-path', 'intro-ribbon-path-mobile'].forEach(function (id) {
-      var p = document.getElementById(id);
-      if (p && p.getTotalLength) {
+    // Set each ribbon's dash to its true length so all three draw perfectly in sync
+    var ribbons = document.querySelectorAll('.intro__ribbon');
+    for (var i = 0; i < ribbons.length; i++) {
+      var p = ribbons[i];
+      if (p.getTotalLength) {
         try {
           var l = p.getTotalLength();
           p.style.strokeDasharray = l;
           p.style.strokeDashoffset = reduceMotion ? 0 : l;
         } catch (_) {}
       }
-    });
+    }
 
     var opening = false;
     function reveal() {
