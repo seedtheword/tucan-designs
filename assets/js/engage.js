@@ -1,11 +1,11 @@
 /* ============================================================
-   Tucan Designs — Newsletter + Consultation booking
-   - Newsletter: POSTs { action:'newsletter', email } to the site's
-     order handler (cfg.orderHandlerUrl). Falls back to a mailto if
-     no backend is configured.
-   - Consultation: if a Google Calendar Appointment Scheduling URL is
-     set (cfg.consultUrl OR data-appt on #consult-embed), swap the
-     placeholder for the live booking iframe.
+   Tucan Designs — Newsletter + Consultation request
+   - Consultation: a request form. POSTs { action:'consultation', ... }
+     to the order handler (cfg.orderHandlerUrl), which emails Brandon.
+     The visitor sees a "we'll get back to you" confirmation. Falls back
+     to a mailto draft if no backend is configured.
+   - Newsletter: POSTs { action:'newsletter', email } to the same
+     handler. Falls back to a mailto if no backend is configured.
    ============================================================ */
 (function () {
   'use strict';
@@ -20,15 +20,75 @@
     return CONFIG;
   }
 
-  // ── Consultation embed ───────────────────────────────────────
-  async function initConsult() {
-    var host = document.getElementById('consult-embed');
-    if (!host) return;
-    var cfg = await loadConfig();
-    var url = (host.getAttribute('data-appt') || '').trim() || (cfg && cfg.consultUrl) || '';
-    if (!url) return; // keep placeholder (call/email)
-    host.innerHTML = '<iframe src="' + url + '" title="Book a consultation with Tucan Designs" ' +
-      'loading="lazy" style="width:100%;height:620px;border:0;"></iframe>';
+  // ── Consultation request form ────────────────────────────────
+  function initConsult() {
+    var form = document.getElementById('consult-form');
+    if (!form) return;
+    var btn = document.getElementById('cs-submit');
+    var statusEl = document.getElementById('cs-status');
+
+    function setStatus(msg, kind) {
+      statusEl.textContent = msg || '';
+      statusEl.className = 'consult-form__status' + (kind ? ' consult-form__status--' + kind : '');
+    }
+    function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var name = val('cs-name');
+      var email = val('cs-email');
+      if (!name || !email || email.indexOf('@') === -1) {
+        setStatus('Please enter your name and a valid email.', 'err');
+        return;
+      }
+
+      var payload = {
+        action: 'consultation',
+        name: name,
+        email: email,
+        phone: val('cs-phone'),
+        method: val('cs-method'),
+        availability: val('cs-availability'),
+        notes: val('cs-notes'),
+        submittedAt: new Date().toISOString()
+      };
+
+      btn.disabled = true; btn.textContent = 'Sending…';
+      setStatus('');
+
+      var cfg = await loadConfig();
+      var url = cfg && cfg.orderHandlerUrl;
+      if (!url) {
+        // No backend — open an email draft to Brandon so nothing is lost.
+        var body = encodeURIComponent(
+          'Consultation request from the website:\n\n' +
+          'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + payload.phone +
+          '\nPreferred contact: ' + payload.method +
+          '\nAvailability: ' + payload.availability +
+          '\n\n' + (payload.notes || '(no notes)')
+        );
+        window.location.href = 'mailto:hello@tucandesigns.com?subject=' +
+          encodeURIComponent('Consultation Request — ' + name) + '&body=' + body;
+        setStatus('Opening your email app to send your request…', 'ok');
+        btn.disabled = false; btn.textContent = 'Request My Consultation →';
+        return;
+      }
+      try {
+        var res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        }).then(function (r) { return r.json(); });
+        if (res && res.ok) {
+          setStatus('Thanks, ' + name.split(' ')[0] + '! Your request is in — we\'ll get back to you by email to set up a time.', 'ok');
+          form.reset();
+        } else { throw new Error((res && res.error) || 'failed'); }
+      } catch (err) {
+        setStatus('Something went wrong. Please try again, or call/email us directly.', 'err');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Request My Consultation →';
+      }
+    });
   }
 
   // ── Newsletter ───────────────────────────────────────────────

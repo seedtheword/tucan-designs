@@ -17,7 +17,7 @@ assets/
     custom-order.js            Custom order form + photo upload
     testimonials.js            Video testimonials (edit VIDEO_TESTIMONIALS)
     payment.js                 PayPal Smart Buttons + payment logging
-    engage.js                  Newsletter + consultation booking
+    engage.js                  Newsletter + consultation request form
     main.js                    Nav, smooth scroll, animations (loads last)
   data/site-config.json        Runtime config (URLs, PayPal, phone) — edit this
   images/                      Founder photos, logo, product renders (add here)

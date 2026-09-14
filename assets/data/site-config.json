@@ -2,14 +2,11 @@
   "_help": "Tucan Designs site configuration. Fill these in once the backend + PayPal are set up. Leave a value as an empty string to keep that feature in its safe fallback mode (custom orders and newsletter fall back to mailto; payments show a 'being set up' note; consultation shows call/email).",
 
   "orderHandlerUrl": "",
-  "_orderHandlerUrl_note": "Google Apps Script Web App URL (deployed as 'Anyone' access). Handles action:'customOrder', 'newsletter', and 'paymentLog'. See docs/apps-script/order-handler.gs and SETUP.md.",
+  "_orderHandlerUrl_note": "Google Apps Script Web App URL (deployed as 'Anyone' access). Handles action:'customOrder', 'consultation', 'newsletter', and 'paymentLog'. See docs/apps-script/order-handler.gs and SETUP.md.",
 
   "paypalClientId": "",
   "paypalMode": "live",
   "_paypal_note": "paypalClientId = the Client ID from Brandon's PayPal business app (developer.paypal.com). paypalMode is 'live' or 'sandbox'. Leave clientId empty to keep manual payment fallback.",
-
-  "consultUrl": "",
-  "_consultUrl_note": "Google Calendar Appointment Scheduling booking-page URL for the free 30-minute consultation. calendar.google.com -> create an Appointment schedule -> Share -> copy the booking page link.",
 
   "businessPhone": "",
   "businessEmail": "hello@tucandesigns.com",

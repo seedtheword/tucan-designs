@@ -147,7 +147,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
         </div>
         <h4 class="service-item__title">Design Consultation</h4>
-        <p class="service-item__desc">Not sure where to start? Book a 30-minute consult and we'll help you shape the perfect piece.</p>
+        <p class="service-item__desc">Not sure where to start? Request a free 30-minute consult and we'll help you shape the perfect piece.</p>
       </div>
       <div class="service-item">
         <div class="service-item__icon">
@@ -402,31 +402,57 @@
   </div>
 </section>
 
-<!-- Consultation booking -->
+<!-- Consultation request -->
 <section class="section" id="consultation">
   <div class="container">
     <div class="consult__wrap">
       <p class="eyebrow section__eyebrow">Free Consultation</p>
-      <h2 class="section__title">Book a 30-minute<br>design chat.</h2>
+      <h2 class="section__title">Request a 30-minute<br>design chat.</h2>
       <div class="consult__meta" style="margin-top:1.5rem;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         <span><b>30 minutes</b> &middot; free &middot; by phone or video</span>
       </div>
-      <p class="section__lead" style="max-width:520px;margin:1rem auto 0;">Pick a time that works for you and we'll talk through your project — dimensions, wood, finish, budget, and timeline. No pressure, just ideas.</p>
+      <p class="section__lead" style="max-width:540px;margin:1rem auto 0;">Send us a few details and when you're generally available. We'll get back to you by email to lock in a time and talk through your project — dimensions, wood, finish, budget, and timeline. No pressure, just ideas.</p>
 
-      <!-- Google Calendar Appointment Scheduling embed.
-           Replace GCAL_APPT_URL below with Brandon's real appointment link:
-           calendar.google.com → Appointment schedules → Share → copy the
-           "booking page" URL, then set data-appt on this element. -->
-      <div class="consult__embed" id="consult-embed" data-appt="">
-        <div class="consult__placeholder">
-          <p>Online booking is being set up. In the meantime, reach out and we'll find a time.</p>
-          <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
-            <a class="btn btn--gold" href="tel:+10000000000">📞 Call to Book</a>
-            <a class="btn btn--ghost" href="mailto:hello@tucandesigns.com?subject=Consultation%20Request">✉️ Email Us</a>
+      <form class="consult-form" id="consult-form" novalidate>
+        <div class="consult-form__row">
+          <div class="consult-form__field">
+            <label for="cs-name">Name</label>
+            <input type="text" id="cs-name" name="name" autocomplete="name" required placeholder="Your full name">
+          </div>
+          <div class="consult-form__field">
+            <label for="cs-email">Email</label>
+            <input type="email" id="cs-email" name="email" autocomplete="email" required placeholder="you@example.com">
           </div>
         </div>
-      </div>
+        <div class="consult-form__row">
+          <div class="consult-form__field">
+            <label for="cs-phone">Phone <span class="consult-form__opt">(optional)</span></label>
+            <input type="tel" id="cs-phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567">
+          </div>
+          <div class="consult-form__field">
+            <label for="cs-method">Preferred contact</label>
+            <select id="cs-method" name="method">
+              <option>Email</option>
+              <option>Phone call</option>
+              <option>Text message</option>
+              <option>Video call</option>
+            </select>
+          </div>
+        </div>
+        <div class="consult-form__field">
+          <label for="cs-availability">When are you generally available? <span class="consult-form__opt">(optional)</span></label>
+          <input type="text" id="cs-availability" name="availability" placeholder="e.g. weekday evenings, or Sat mornings">
+        </div>
+        <div class="consult-form__field">
+          <label for="cs-notes">What would you like to talk about? <span class="consult-form__opt">(optional)</span></label>
+          <textarea id="cs-notes" name="notes" placeholder="Tell us a little about the piece you have in mind."></textarea>
+        </div>
+        <button type="submit" class="btn btn--gold consult-form__submit" id="cs-submit">Request My Consultation →</button>
+        <p class="consult-form__status" id="cs-status" aria-live="polite"></p>
+      </form>
+
+      <p class="consult__or">Prefer to reach out directly? <a href="tel:+10000000000">Call us</a> or <a href="mailto:hello@tucandesigns.com?subject=Consultation%20Request">email hello@tucandesigns.com</a>.</p>
     </div>
   </div>
 </section>

@@ -41,6 +41,7 @@ function doPost(e) {
     var action = body.action || '';
 
     if (action === 'customOrder')  return _json(handleCustomOrder(body));
+    if (action === 'consultation') return _json(handleConsultation(body));
     if (action === 'newsletter')   return _json(handleNewsletter(body));
     if (action === 'paymentLog')   return _json(handlePaymentLog(body));
 
@@ -119,6 +120,42 @@ function handleCustomOrder(body) {
   }
 
   return { ok: true, saved: true, photos: photoLinks.length };
+}
+
+/* ---------------- Consultation request ---------------- */
+function handleConsultation(body) {
+  var ss = SpreadsheetApp.openById(SHEET_ID);
+  var sheet = _sheet(ss, 'Consultations', [
+    'Timestamp', 'Name', 'Email', 'Phone', 'Preferred Contact', 'Availability', 'Notes', 'Status'
+  ]);
+
+  var stamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm:ss');
+  sheet.appendRow([
+    stamp, body.name || '', body.email || '', body.phone || '',
+    body.method || '', body.availability || '', body.notes || '', 'New'
+  ]);
+
+  if (NOTIFY_EMAIL) {
+    try {
+      MailApp.sendEmail({
+        to: NOTIFY_EMAIL,
+        replyTo: body.email || NOTIFY_EMAIL,
+        subject: 'New consultation request — ' + (body.name || 'Unknown'),
+        body: [
+          'Someone requested a free consultation on the website:', '',
+          'Name: ' + (body.name || ''),
+          'Email: ' + (body.email || ''),
+          'Phone: ' + (body.phone || ''),
+          'Preferred contact: ' + (body.method || ''),
+          'Availability: ' + (body.availability || ''),
+          '', 'Notes:', (body.notes || '(none)'),
+          '', 'Reply to this email to reach them directly.'
+        ].join('\n')
+      });
+    } catch (mailErr) { /* non-fatal */ }
+  }
+
+  return { ok: true, requested: true };
 }
 
 /* ---------------- Newsletter ---------------- */

@@ -61,17 +61,20 @@ automatically. Until set, the manual "call/email to pay" fallback stays visible.
 
 ---
 
-## 3. 30-minute consultation booking
+## 3. 30-minute consultation requests
 
-1. In [Google Calendar](https://calendar.google.com), click **Create →
-   Appointment schedule**.
-2. Set the duration to **30 minutes**, set your availability, and save.
-3. Click **Share → Open booking page**, copy that page's URL.
-4. Paste it into `assets/data/site-config.json` as `consultUrl`.
+No calendar setup needed. The consultation section is a **request form** —
+visitors fill in their details and general availability, and it emails Brandon
+so he can reply and set up a time. The visitor sees a "we'll get back to you"
+confirmation.
 
-The consultation section swaps its call/email placeholder for the live booking
-calendar. (You can also paste the URL directly into the `data-appt` attribute on
-`#consult-embed` in `index.html`.)
+- It uses the **same order handler** as §1. Once `orderHandlerUrl` is set,
+  requests are emailed to `NOTIFY_EMAIL` (reply-to is set to the visitor's
+  address, so Brandon can just hit Reply) and logged to a **Consultations** tab.
+- Until `orderHandlerUrl` is set, the form falls back to opening a pre-filled
+  email draft to `hello@tucandesigns.com` — nothing is lost.
+
+Nothing else to configure here.
 
 ---
 
@@ -88,7 +91,7 @@ calendar. (You can also paste the URL directly into the `data-appt` attribute on
 
 - [ ] Real business **phone number** (replaces `tel:+10000000000` placeholders)
 - [ ] **PayPal** business Client ID (see §2)
-- [ ] Google Calendar **consultation booking URL** (see §3)
+- [ ] (Consultation needs no setup — it emails Brandon via the order handler)
 - [ ] **Founder photos** → drop into `assets/images/` and replace the initials
       placeholders in the Founders section of `index.html`
 - [ ] **Founder bios** (currently placeholder copy)
