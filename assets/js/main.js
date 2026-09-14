@@ -18,15 +18,18 @@
     var reduceMotion = window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Set the dash length to the ribbon's true length so it draws perfectly
-    var path = document.getElementById('intro-ribbon-path');
-    if (path && path.getTotalLength) {
-      try {
-        var len = path.getTotalLength();
-        path.style.strokeDasharray = len;
-        path.style.strokeDashoffset = reduceMotion ? 0 : len;
-      } catch (_) {}
-    }
+    // Set the dash length to each ribbon's true length so it draws perfectly
+    // (both the desktop and mobile paths exist; CSS shows the right one)
+    ['intro-ribbon-path', 'intro-ribbon-path-mobile'].forEach(function (id) {
+      var p = document.getElementById(id);
+      if (p && p.getTotalLength) {
+        try {
+          var l = p.getTotalLength();
+          p.style.strokeDasharray = l;
+          p.style.strokeDashoffset = reduceMotion ? 0 : l;
+        } catch (_) {}
+      }
+    });
 
     var opening = false;
     function reveal() {
