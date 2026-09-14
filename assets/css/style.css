@@ -150,9 +150,15 @@ body.intro-lock { overflow: hidden; }
 /* Mobile / narrow screens — make the ribbon bold across the width and
    right-size the content panel so it never clips or looks tiny. */
 @media (max-width: 640px) {
-  /* Taller seam band + thicker stroke so the ribbon reads boldly on phones */
-  .intro__seam { height: 170px; }
+  /* Diagonal ribbon across the tall phone screen — wider than the viewport and
+     rotated so the wavy line runs corner-to-corner. */
+  .intro__seam {
+    height: 200px; left: -30%; right: -30%; width: 160%;
+    transform: translateY(-50%) rotate(-24deg); transform-origin: center;
+  }
   #intro-ribbon-path { stroke-width: 9; }
+  /* Keep the diagonal angle while it clears away on open */
+  .intro.is-open .intro__seam { transform: translateY(-50%) rotate(-24deg) scale(1.12); opacity: 0; }
   .intro__content {
     width: min(88vw, 340px); padding: 2rem 1.25rem;
     background: radial-gradient(circle, rgba(12,11,10,0.94) 0%, rgba(12,11,10,0.82) 52%, rgba(12,11,10,0) 78%);
