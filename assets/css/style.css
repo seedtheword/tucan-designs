@@ -147,6 +147,25 @@ body.intro-lock { overflow: hidden; }
   .intro__half { transition: none; }
 }
 
+/* Mobile / narrow screens — make the ribbon bold across the width and
+   right-size the content panel so it never clips or looks tiny. */
+@media (max-width: 640px) {
+  /* Taller seam band + thicker stroke so the ribbon reads boldly on phones */
+  .intro__seam { height: 170px; }
+  #intro-ribbon-path { stroke-width: 9; }
+  .intro__content {
+    width: min(88vw, 340px); padding: 2rem 1.25rem;
+    background: radial-gradient(circle, rgba(12,11,10,0.94) 0%, rgba(12,11,10,0.82) 52%, rgba(12,11,10,0) 78%);
+  }
+  .intro__mono-t { font-size: 3.6rem; }
+  .intro__brand { font-size: 1.25rem; margin-bottom: 1.5rem; }
+  .intro__enter { font-size: 0.66rem; letter-spacing: 0.24em; padding: 0.65rem 1.5rem; }
+}
+@media (max-width: 380px) {
+  .intro__mono-t { font-size: 3.1rem; }
+  .intro__brand { font-size: 1.1rem; }
+}
+
 /* ── Typography ─────────────────────────────────────────────── */
 h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 1.1; letter-spacing: -0.015em; }
 .eyebrow {
