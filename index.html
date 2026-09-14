@@ -16,22 +16,28 @@
 
 <!-- Intro curtain — waits for a click, then unwinds like a ribbon to reveal the site.
      Shows once per browser session. Removed entirely if JS is off (see <noscript>). -->
-<div class="intro" id="intro" role="dialog" aria-label="Enter Tucan Designs">
-  <div class="intro__panel intro__panel--top"></div>
-  <div class="intro__panel intro__panel--bottom"></div>
+<div class="intro" id="intro" role="dialog" aria-label="Tucan Designs intro">
+  <!-- A golden string-ribbon that unwinds across the screen (~3s), then reveals the site -->
+  <svg class="intro__svg" id="intro-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="ribbonGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#9A7E38"/>
+        <stop offset="0.5" stop-color="#E4CB86"/>
+        <stop offset="1" stop-color="#C9A54D"/>
+      </linearGradient>
+    </defs>
+    <!-- Flowing ribbon path — drawn via stroke-dash animation -->
+    <path id="intro-ribbon-path"
+      d="M-40 300 C 140 120, 300 500, 470 300 S 760 90, 900 300 S 1120 520, 1240 300"
+      fill="none" stroke="url(#ribbonGold)" stroke-width="3" stroke-linecap="round"/>
+  </svg>
   <div class="intro__content">
-    <span class="intro__ribbon" aria-hidden="true"></span>
     <div class="intro__logo" title="Tucan Designs">
-      <span class="intro__logo-ring"></span>
       <span class="intro__logo-mark">T</span>
     </div>
     <p class="intro__brand">Tucan <b>Designs</b></p>
-    <button type="button" class="intro__enter" id="intro-enter">
-      <span>Enter</span>
-      <span class="intro__enter-line" aria-hidden="true"></span>
-    </button>
-    <p class="intro__hint">Click anywhere to unwind</p>
   </div>
+  <button type="button" class="intro__skip" id="intro-skip" aria-label="Skip intro">Skip</button>
 </div>
 <noscript><style>.intro{display:none!important}</style></noscript>
 

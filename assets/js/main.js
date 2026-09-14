@@ -2,45 +2,54 @@
 (function () {
   'use strict';
 
-  // ── Intro curtain: waits for a click, then unwinds to reveal the site ──
+  // ── Intro: a golden ribbon unwinds across the screen (~3s), then reveals ──
   (function initIntro() {
     var intro = document.getElementById('intro');
     if (!intro) return;
 
-    // Only show once per browser session (not on every page navigation)
+    // Show once per browser session (not on every page navigation)
     var SEEN_KEY = 'tucan-intro-seen';
     var alreadySeen = false;
     try { alreadySeen = sessionStorage.getItem(SEEN_KEY) === '1'; } catch (_) {}
+    if (alreadySeen) { intro.classList.add('is-done'); return; }
 
-    if (alreadySeen) {
-      intro.classList.add('is-done');
-      return;
-    }
+    var reduceMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     document.body.classList.add('intro-lock');
-    var opening = false;
 
-    function open() {
+    // Set the dash length to the ribbon's true length so it draws perfectly
+    var path = document.getElementById('intro-ribbon-path');
+    if (path && path.getTotalLength) {
+      try {
+        var len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = reduceMotion ? 0 : len;
+      } catch (_) {}
+    }
+
+    var opening = false;
+    function reveal() {
       if (opening) return;
       opening = true;
       try { sessionStorage.setItem(SEEN_KEY, '1'); } catch (_) {}
       intro.classList.add('is-open');
       document.body.classList.remove('intro-lock');
-      // After the peel animation, take it out of the flow entirely
-      window.setTimeout(function () {
-        intro.classList.add('is-done');
-      }, 1200);
+      window.setTimeout(function () { intro.classList.add('is-done'); }, 850);
     }
 
-    intro.addEventListener('click', open);
-    // Keyboard: Enter / Space opens it too (button is focusable)
-    intro.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
-        e.preventDefault(); open();
-      }
-    });
-    var enterBtn = document.getElementById('intro-enter');
-    if (enterBtn) { enterBtn.focus({ preventScroll: true }); }
+    // Auto-reveal after the ribbon finishes drawing (+ a beat for the logo)
+    var AUTO_MS = reduceMotion ? 900 : 3600;
+    var timer = window.setTimeout(reveal, AUTO_MS);
+
+    // Let impatient visitors skip
+    var skipBtn = document.getElementById('intro-skip');
+    if (skipBtn) {
+      skipBtn.addEventListener('click', function (e) {
+        e.stopPropagation(); window.clearTimeout(timer); reveal();
+      });
+    }
+    intro.addEventListener('click', function () { window.clearTimeout(timer); reveal(); });
   })();
 
   // Shrink nav padding on scroll for a subtle settle effect
