@@ -42,6 +42,22 @@ See [`docs/apps-script/SETUP.md`](docs/apps-script/SETUP.md) for the backend,
 PayPal, consultation booking, and the checklist of assets still needed from
 Brandon (phone, photos, bios, video IDs, logo).
 
+## Images
+
+The photos in `assets/images/` are **interim placeholders** sourced from
+[Unsplash](https://unsplash.com) (free for commercial use). Swap them for
+Brandon's own product/founder photography when available — the file names map
+directly to their use:
+
+- `hero-table.jpg` — hero product shot
+- `product-*.jpg` — one per catalog item (see `image` field in `products.js`)
+- `founder-craftsman.jpg`, `founder-workshop.jpg` — founders section
+
+Photo credits (Unsplash): Ichsan Chairul, Stephan Coudassot, Lee Campbell,
+Devin Berko, Pascal Meier, Sven Mieke, ASR Design Studio, Ali Mkumbwa,
+Barn Images. Content was rephrased/curated for this project; no changes to the
+photos themselves beyond resizing.
+
 ## Hosting
 
 Designed for static hosting (GitHub Pages, Netlify, etc.). For GitHub Pages:

@@ -20,7 +20,7 @@ var PRODUCTS = [
     price: 2400,
     wasPrice: null,
     dims: '84" × 40" × 30"',
-    image: '',
+    image: 'assets/images/product-walnut-dining.jpg',
     status: 'in-stock'
   },
   {
@@ -30,7 +30,7 @@ var PRODUCTS = [
     price: 1850,
     wasPrice: null,
     dims: '72" × 38" × 30"',
-    image: '',
+    image: 'assets/images/product-farmhouse-oak.jpg',
     status: 'in-stock'
   },
   {
@@ -40,7 +40,7 @@ var PRODUCTS = [
     price: 720,
     wasPrice: null,
     dims: '48" × 24" × 18"',
-    image: '',
+    image: 'assets/images/product-maple-coffee.jpg',
     status: 'made-to-order'
   },
   {
@@ -50,7 +50,7 @@ var PRODUCTS = [
     price: 980,
     wasPrice: null,
     dims: '54" × 16" × 32"',
-    image: '',
+    image: 'assets/images/product-cherry-console.jpg',
     status: 'made-to-order'
   },
   {
@@ -60,7 +60,7 @@ var PRODUCTS = [
     price: 4200,
     wasPrice: null,
     dims: '96" × 44" × 30"',
-    image: '',
+    image: 'assets/images/product-epoxy-conference.jpg',
     status: 'made-to-order'
   },
   {
@@ -70,7 +70,7 @@ var PRODUCTS = [
     price: 340,
     wasPrice: null,
     dims: '20" × 20" × 24"',
-    image: '',
+    image: 'assets/images/product-ash-side.jpg',
     status: 'in-stock'
   }
 ];

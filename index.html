@@ -52,27 +52,11 @@
       <a href="#custom" class="btn btn--ghost">Start a Custom Order</a>
     </div>
 
-    <!-- Table render graphic — CSS/SVG line drawing placeholder for Brandon's render -->
-    <figure class="hero__render">
-      <svg viewBox="0 0 380 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Line rendering of a handcrafted table">
-        <!-- tabletop -->
-        <path d="M40 70 L340 70 L360 88 L20 88 Z" stroke="#C9A54D" stroke-width="1.4" stroke-linejoin="round" fill="rgba(201,165,77,0.05)"/>
-        <!-- top edge highlight -->
-        <line x1="40" y1="70" x2="340" y2="70" stroke="#E4CB86" stroke-width="1"/>
-        <!-- front apron -->
-        <path d="M20 88 L360 88 L360 100 L20 100 Z" stroke="#9A7E38" stroke-width="1.1" fill="rgba(201,165,77,0.03)"/>
-        <!-- legs -->
-        <line x1="52" y1="100" x2="52" y2="180" stroke="#C9A54D" stroke-width="1.4"/>
-        <line x1="64" y1="100" x2="64" y2="180" stroke="#9A7E38" stroke-width="1"/>
-        <line x1="316" y1="100" x2="316" y2="180" stroke="#C9A54D" stroke-width="1.4"/>
-        <line x1="328" y1="100" x2="328" y2="180" stroke="#9A7E38" stroke-width="1"/>
-        <!-- wood grain hints on top -->
-        <line x1="70" y1="79" x2="330" y2="79" stroke="rgba(201,165,77,0.25)" stroke-width="0.6"/>
-        <line x1="60" y1="83" x2="345" y2="83" stroke="rgba(201,165,77,0.18)" stroke-width="0.6"/>
-        <!-- floor shadow -->
-        <ellipse cx="190" cy="184" rx="150" ry="6" fill="rgba(201,165,77,0.06)"/>
-      </svg>
-      <figcaption class="hero__render-caption">Product render &middot; coming soon</figcaption>
+    <!-- Hero product photo (swap assets/images/hero-table.jpg for Brandon's own render/photo) -->
+    <figure class="hero__render" id="hero-render">
+      <div class="hero__render-frame">
+        <img src="assets/images/hero-table.jpg" alt="Handcrafted live-edge solid-wood table in warm light" width="1400" height="2100" fetchpriority="high">
+      </div>
     </figure>
   </div>
   <div class="hero__scroll">
@@ -84,7 +68,7 @@
 <!-- Products -->
 <section class="section" id="products">
   <div class="container">
-    <div class="section__head section__head--center">
+    <div class="section__head section__head--center" data-reveal>
       <p class="eyebrow section__eyebrow">The Collection</p>
       <h2 class="section__title">Tables ready to live with.</h2>
       <p class="section__lead">Each piece is built from solid hardwood and finished by hand. In-stock tables ship in days; made-to-order pieces are crafted just for you.</p>
@@ -108,7 +92,7 @@
 <!-- Services / How it works -->
 <section class="section section--alt" id="services">
   <div class="container">
-    <div class="section__head">
+    <div class="section__head" data-reveal>
       <p class="eyebrow section__eyebrow">How It Works</p>
       <h2 class="section__title">From rough lumber<br>to your room.</h2>
       <p class="section__lead">Every table follows the same careful path. No rushing, no shortcuts — just honest work and clear communication from first sketch to final delivery.</p>
@@ -297,7 +281,7 @@
 <!-- Testimonials -->
 <section class="section section--alt" id="testimonials">
   <div class="container">
-    <div class="section__head section__head--center">
+    <div class="section__head section__head--center" data-reveal>
       <p class="eyebrow section__eyebrow">Kind Words</p>
       <h2 class="section__title">Tables that<br>get talked about.</h2>
     </div>
@@ -328,17 +312,17 @@
 <!-- Founders -->
 <section class="section" id="founders">
   <div class="container">
-    <div class="section__head">
+    <div class="section__head" data-reveal>
       <p class="eyebrow section__eyebrow">The Makers</p>
       <h2 class="section__title">The hands behind<br>every table.</h2>
       <p class="section__lead">Tucan Designs is a small, family-run shop. We know every board that comes through our doors and every home our tables end up in.</p>
     </div>
 
     <div class="founders__grid">
-      <article class="founder">
+      <article class="founder" data-reveal data-reveal-delay="1">
         <div class="founder__photo">
-          <!-- Replace with <img src="assets/images/brandon.jpg" alt="Brandon"> -->
-          <span class="founder__photo-initials">B</span>
+          <!-- Interim workshop photo — replace with Brandon's own: assets/images/brandon.jpg -->
+          <img src="assets/images/founder-craftsman.jpg" alt="Brandon at the workbench" loading="lazy">
         </div>
         <div class="founder__info">
           <h3 class="founder__name">Brandon</h3>
@@ -347,9 +331,10 @@
         </div>
       </article>
 
-      <article class="founder">
+      <article class="founder" data-reveal data-reveal-delay="2">
         <div class="founder__photo">
-          <span class="founder__photo-initials">T</span>
+          <!-- Interim workshop photo — replace with a real team photo when available -->
+          <img src="assets/images/founder-workshop.jpg" alt="The Tucan Designs workshop" loading="lazy">
         </div>
         <div class="founder__info">
           <h3 class="founder__name">The Tucan Team</h3>
@@ -364,7 +349,7 @@
 <!-- Payment / Deposit -->
 <section class="section section--alt" id="pay">
   <div class="container">
-    <div class="section__head section__head--center">
+    <div class="section__head section__head--center" data-reveal>
       <p class="eyebrow section__eyebrow">Secure Checkout</p>
       <h2 class="section__title">Pay a deposit or<br>settle your balance.</h2>
       <p class="section__lead">Enter your invoice amount and pay securely by card or PayPal. Have a promo code? Discounts are applied automatically during active sales.</p>
