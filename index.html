@@ -22,9 +22,9 @@
   <div class="intro__half intro__half--top"></div>
   <div class="intro__half intro__half--bottom"></div>
 
-  <!-- Golden ribbon seam across the center -->
+  <!-- Flowing golden ribbon on the seam — draws itself across the center -->
   <div class="intro__seam" id="intro-seam" aria-hidden="true">
-    <svg class="intro__seam-svg" viewBox="0 0 1200 40" preserveAspectRatio="none">
+    <svg class="intro__seam-svg" viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid meet">
       <defs>
         <linearGradient id="ribbonGold" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="#9A7E38"/>
@@ -32,7 +32,8 @@
           <stop offset="1" stop-color="#9A7E38"/>
         </linearGradient>
       </defs>
-      <path id="intro-ribbon-path" d="M0 20 L1200 20"
+      <path id="intro-ribbon-path"
+        d="M-20 100 C 160 20, 320 180, 500 100 S 820 20, 1000 100 S 1120 150, 1220 100"
         fill="none" stroke="url(#ribbonGold)" stroke-width="4" stroke-linecap="round"/>
     </svg>
   </div>

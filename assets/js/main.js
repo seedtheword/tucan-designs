@@ -15,6 +15,19 @@
 
     document.body.classList.add('intro-lock');
 
+    var reduceMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Set the dash length to the ribbon's true length so it draws perfectly
+    var path = document.getElementById('intro-ribbon-path');
+    if (path && path.getTotalLength) {
+      try {
+        var len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = reduceMotion ? 0 : len;
+      } catch (_) {}
+    }
+
     var opening = false;
     function reveal() {
       if (opening) return;

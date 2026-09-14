@@ -69,22 +69,24 @@ a { color: inherit; text-decoration: none; }
   background: radial-gradient(120% 160% at 50% 0%, #16130F 0%, #0C0B0A 75%);
 }
 
-/* Golden ribbon seam sitting on the split line */
+/* Flowing golden ribbon on the split line */
 .intro__seam {
-  position: absolute; top: 50%; left: 0; right: 0; height: 40px; z-index: 2;
+  position: absolute; top: 50%; left: 0; right: 0; height: 200px; z-index: 2;
   transform: translateY(-50%);
-  filter: drop-shadow(0 0 10px rgba(201,165,77,0.55));
   will-change: transform, opacity;
   transition: transform 0.9s var(--ease), opacity 0.7s var(--ease);
 }
-.intro__seam-svg { display: block; width: 100%; height: 100%; }
-/* Ribbon draws across via a lightweight scaleX (GPU-composited, smooth) */
-#intro-ribbon-path { /* fallback if JS dash not applied */ }
 .intro__seam-svg {
-  transform: scaleX(0); transform-origin: center;
-  animation: seamDraw 2.4s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+  display: block; width: 100%; height: 100%;
+  filter: drop-shadow(0 0 8px rgba(201,165,77,0.55));
 }
-@keyframes seamDraw { to { transform: scaleX(1); } }
+/* The wavy ribbon draws itself across via stroke-dash */
+#intro-ribbon-path {
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+  animation: ribbonDraw 2.6s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+}
+@keyframes ribbonDraw { to { stroke-dashoffset: 0; } }
 
 /* Centered content — lifted above the seam, with a dark halo + gold glow so it
    reads clearly over the ribbon */
@@ -132,15 +134,15 @@ a { color: inherit; text-decoration: none; }
 /* ── Open: the box splits — halves peel apart, seam + content clear ── */
 .intro.is-open .intro__half--top { transform: translateY(-100%); }
 .intro.is-open .intro__half--bottom { transform: translateY(100%); }
-.intro.is-open .intro__seam { transform: translateY(-50%) scaleX(1.15); opacity: 0; }
+.intro.is-open .intro__seam { transform: translateY(-50%) scale(1.12); opacity: 0; }
 .intro.is-open .intro__content { opacity: 0; transition: opacity 0.35s var(--ease); animation: none; }
 
 /* Lock scroll while the intro is up */
 body.intro-lock { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
-  .intro__seam-svg, .intro__content, .intro__enter { animation: none; }
-  .intro__seam-svg { transform: scaleX(1); }
+  #intro-ribbon-path, .intro__content, .intro__enter { animation: none; }
+  #intro-ribbon-path { stroke-dashoffset: 0; }
   .intro__content { opacity: 1; }
   .intro__half { transition: none; }
 }
