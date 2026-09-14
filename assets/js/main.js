@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  // ── Intro: a golden ribbon unwinds across the screen (~3s), then reveals ──
+  // ── Intro: a golden ribbon draws down the center, then waits for a click ──
   (function initIntro() {
     var intro = document.getElementById('intro');
     if (!intro) return;
@@ -35,21 +35,18 @@
       try { sessionStorage.setItem(SEEN_KEY, '1'); } catch (_) {}
       intro.classList.add('is-open');
       document.body.classList.remove('intro-lock');
-      window.setTimeout(function () { intro.classList.add('is-done'); }, 850);
+      window.setTimeout(function () { intro.classList.add('is-done'); }, 950);
     }
 
-    // Auto-reveal after the ribbon finishes drawing (+ a beat for the logo)
-    var AUTO_MS = reduceMotion ? 900 : 3600;
-    var timer = window.setTimeout(reveal, AUTO_MS);
-
-    // Let impatient visitors skip
-    var skipBtn = document.getElementById('intro-skip');
-    if (skipBtn) {
-      skipBtn.addEventListener('click', function (e) {
-        e.stopPropagation(); window.clearTimeout(timer); reveal();
-      });
-    }
-    intro.addEventListener('click', function () { window.clearTimeout(timer); reveal(); });
+    // Wait for the visitor: click / tap anywhere, or Enter / Space
+    intro.addEventListener('click', reveal);
+    intro.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault(); reveal();
+      }
+    });
+    var enterBtn = document.getElementById('intro-enter');
+    if (enterBtn) { try { enterBtn.focus({ preventScroll: true }); } catch (_) {} }
   })();
 
   // Shrink nav padding on scroll for a subtle settle effect
