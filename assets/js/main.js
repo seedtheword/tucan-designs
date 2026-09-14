@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  // ── Intro: a golden ribbon draws down the center, then waits for a click ──
+  // ── Intro: a golden ribbon draws across the screen, then waits for a click ──
   (function initIntro() {
     var intro = document.getElementById('intro');
     if (!intro) return;
@@ -38,15 +38,18 @@
       window.setTimeout(function () { intro.classList.add('is-done'); }, 950);
     }
 
-    // Wait for the visitor: click / tap anywhere, or Enter / Space
+    // Wait for the visitor: click / tap anywhere, or any key
     intro.addEventListener('click', reveal);
-    intro.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+    function onKey(e) {
+      if (opening) { document.removeEventListener('keydown', onKey); return; }
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Escape') {
         e.preventDefault(); reveal();
       }
-    });
-    var enterBtn = document.getElementById('intro-enter');
-    if (enterBtn) { try { enterBtn.focus({ preventScroll: true }); } catch (_) {} }
+    }
+    document.addEventListener('keydown', onKey);
+
+    // Safety net: if anything stalls, never trap the visitor — auto-open after 12s
+    window.setTimeout(reveal, 12000);
   })();
 
   // Shrink nav padding on scroll for a subtle settle effect
