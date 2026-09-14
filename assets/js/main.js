@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  // ── Intro: a golden ribbon draws across the screen, then waits for a click ──
+  // ── Intro: a wrapped gift box — click splits it open to reveal the site ──
   (function initIntro() {
     var intro = document.getElementById('intro');
     if (!intro) return;
@@ -13,20 +13,7 @@
     try { alreadySeen = sessionStorage.getItem(SEEN_KEY) === '1'; } catch (_) {}
     if (alreadySeen) { intro.classList.add('is-done'); return; }
 
-    var reduceMotion = window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     document.body.classList.add('intro-lock');
-
-    // Set the dash length to the ribbon's true length so it draws perfectly
-    var path = document.getElementById('intro-ribbon-path');
-    if (path && path.getTotalLength) {
-      try {
-        var len = path.getTotalLength();
-        path.style.strokeDasharray = len;
-        path.style.strokeDashoffset = reduceMotion ? 0 : len;
-      } catch (_) {}
-    }
 
     var opening = false;
     function reveal() {
@@ -35,10 +22,11 @@
       try { sessionStorage.setItem(SEEN_KEY, '1'); } catch (_) {}
       intro.classList.add('is-open');
       document.body.classList.remove('intro-lock');
-      window.setTimeout(function () { intro.classList.add('is-done'); }, 950);
+      // Remove from the flow once the box has finished peeling apart
+      window.setTimeout(function () { intro.classList.add('is-done'); }, 1100);
     }
 
-    // Wait for the visitor: click / tap anywhere, or any key
+    // Wait for the visitor: click / tap anywhere, or any relevant key
     intro.addEventListener('click', reveal);
     function onKey(e) {
       if (opening) { document.removeEventListener('keydown', onKey); return; }
@@ -48,8 +36,8 @@
     }
     document.addEventListener('keydown', onKey);
 
-    // Safety net: if anything stalls, never trap the visitor — auto-open after 12s
-    window.setTimeout(reveal, 12000);
+    // Safety net: never trap the visitor if something stalls
+    window.setTimeout(reveal, 15000);
   })();
 
   // Shrink nav padding on scroll for a subtle settle effect

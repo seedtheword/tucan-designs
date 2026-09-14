@@ -14,22 +14,30 @@
 </head>
 <body>
 
-<!-- Intro: a golden ribbon draws across the screen (~3s), then holds and waits
-     for a click to open. Shows once per session. Hidden if JS is off. -->
+<!-- Intro: a wrapped "gift box" — a golden ribbon seam draws across the center,
+     then a click splits the two halves apart to reveal the site.
+     Shows once per session. Hidden if JS is off. -->
 <div class="intro" id="intro" role="dialog" aria-label="Enter Tucan Designs">
-  <!-- Flowing horizontal ribbon, drawn via stroke-dash -->
-  <svg class="intro__svg" id="intro-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="ribbonGold" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#9A7E38"/>
-        <stop offset="0.5" stop-color="#E4CB86"/>
-        <stop offset="1" stop-color="#C9A54D"/>
-      </linearGradient>
-    </defs>
-    <path id="intro-ribbon-path"
-      d="M-40 300 C 140 120, 300 500, 470 300 S 760 90, 900 300 S 1120 520, 1240 300"
-      fill="none" stroke="url(#ribbonGold)" stroke-width="3" stroke-linecap="round"/>
-  </svg>
+  <!-- The two box halves that peel apart on open -->
+  <div class="intro__half intro__half--top"></div>
+  <div class="intro__half intro__half--bottom"></div>
+
+  <!-- Golden ribbon seam across the center -->
+  <div class="intro__seam" id="intro-seam" aria-hidden="true">
+    <svg class="intro__seam-svg" viewBox="0 0 1200 40" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="ribbonGold" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#9A7E38"/>
+          <stop offset="0.5" stop-color="#E4CB86"/>
+          <stop offset="1" stop-color="#9A7E38"/>
+        </linearGradient>
+      </defs>
+      <path id="intro-ribbon-path" d="M0 20 L1200 20"
+        fill="none" stroke="url(#ribbonGold)" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- Centered content, sits above the seam with its own glow -->
   <div class="intro__content">
     <div class="intro__logo" title="Tucan Designs">
       <span class="intro__mono-t">T</span>
