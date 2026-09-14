@@ -2,6 +2,47 @@
 (function () {
   'use strict';
 
+  // ── Intro curtain: waits for a click, then unwinds to reveal the site ──
+  (function initIntro() {
+    var intro = document.getElementById('intro');
+    if (!intro) return;
+
+    // Only show once per browser session (not on every page navigation)
+    var SEEN_KEY = 'tucan-intro-seen';
+    var alreadySeen = false;
+    try { alreadySeen = sessionStorage.getItem(SEEN_KEY) === '1'; } catch (_) {}
+
+    if (alreadySeen) {
+      intro.classList.add('is-done');
+      return;
+    }
+
+    document.body.classList.add('intro-lock');
+    var opening = false;
+
+    function open() {
+      if (opening) return;
+      opening = true;
+      try { sessionStorage.setItem(SEEN_KEY, '1'); } catch (_) {}
+      intro.classList.add('is-open');
+      document.body.classList.remove('intro-lock');
+      // After the peel animation, take it out of the flow entirely
+      window.setTimeout(function () {
+        intro.classList.add('is-done');
+      }, 1200);
+    }
+
+    intro.addEventListener('click', open);
+    // Keyboard: Enter / Space opens it too (button is focusable)
+    intro.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault(); open();
+      }
+    });
+    var enterBtn = document.getElementById('intro-enter');
+    if (enterBtn) { enterBtn.focus({ preventScroll: true }); }
+  })();
+
   // Shrink nav padding on scroll for a subtle settle effect
   var nav = document.getElementById('nav');
   if (nav) {

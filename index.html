@@ -14,6 +14,27 @@
 </head>
 <body>
 
+<!-- Intro curtain — waits for a click, then unwinds like a ribbon to reveal the site.
+     Shows once per browser session. Removed entirely if JS is off (see <noscript>). -->
+<div class="intro" id="intro" role="dialog" aria-label="Enter Tucan Designs">
+  <div class="intro__panel intro__panel--top"></div>
+  <div class="intro__panel intro__panel--bottom"></div>
+  <div class="intro__content">
+    <span class="intro__ribbon" aria-hidden="true"></span>
+    <div class="intro__logo" title="Tucan Designs">
+      <span class="intro__logo-ring"></span>
+      <span class="intro__logo-mark">T</span>
+    </div>
+    <p class="intro__brand">Tucan <b>Designs</b></p>
+    <button type="button" class="intro__enter" id="intro-enter">
+      <span>Enter</span>
+      <span class="intro__enter-line" aria-hidden="true"></span>
+    </button>
+    <p class="intro__hint">Click anywhere to unwind</p>
+  </div>
+</div>
+<noscript><style>.intro{display:none!important}</style></noscript>
+
 <!-- Seasonal sale bar (auto-shows the active promo; dismissible) -->
 <div class="sale-bar" id="sale-bar" hidden role="region" aria-label="Current promotion">
   <span class="sale-bar__tag" id="sale-bar-tag">Sale</span>
