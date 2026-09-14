@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tucan Designs LLC — Handcrafted Tables</title>
+  <meta name="description" content="Tucan Designs LLC — handcrafted custom tables built to order. Solid wood, timeless design, made in the USA.">
+  <meta property="og:site_name" content="Tucan Designs LLC">
+  <meta property="og:title" content="Tucan Designs LLC — Handcrafted Tables">
+  <meta property="og:description" content="Custom tables built to order. Solid wood, timeless craftsmanship.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Seasonal sale bar (auto-shows the active promo; dismissible) -->
+<div class="sale-bar" id="sale-bar" hidden role="region" aria-label="Current promotion">
+  <span class="sale-bar__tag" id="sale-bar-tag">Sale</span>
+  <span id="sale-bar-msg"></span>
+  <a class="sale-bar__link" href="#products" id="sale-bar-link">Shop now →</a>
+  <button class="sale-bar__close" id="sale-bar-close" aria-label="Dismiss">&times;</button>
+</div>
+
+<!-- Nav -->
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__brand">Tucan <b>Designs</b></a>
+  <nav class="nav__links">
+    <a href="#products">Tables</a>
+    <a href="#services">Services</a>
+    <a href="#custom">Custom Orders</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#founders">About</a>
+    <a href="#consultation" class="nav__cta">Book a Consult</a>
+  </nav>
+  <button class="nav__toggle" id="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero__inner">
+    <!-- Logo placeholder (monogram) until the real Tucan Designs logo is ready -->
+    <div class="hero__logo" title="Logo coming soon">
+      <span class="hero__logo-ring"></span>
+      <span class="hero__logo-mark">T</span>
+    </div>
+    <p class="eyebrow hero__eyebrow">Handcrafted &middot; Built to Order</p>
+    <h1 class="hero__title">Tables made to <em>last a lifetime.</em></h1>
+    <p class="hero__lead">Solid-wood craftsmanship, timeless design, and a finish that ages beautifully. Every Tucan Designs table is built by hand, to your specifications.</p>
+    <div class="hero__ctas">
+      <a href="#products" class="btn btn--gold">Shop Tables</a>
+      <a href="#custom" class="btn btn--ghost">Start a Custom Order</a>
+    </div>
+
+    <!-- Table render graphic — CSS/SVG line drawing placeholder for Brandon's render -->
+    <figure class="hero__render">
+      <svg viewBox="0 0 380 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Line rendering of a handcrafted table">
+        <!-- tabletop -->
+        <path d="M40 70 L340 70 L360 88 L20 88 Z" stroke="#C9A54D" stroke-width="1.4" stroke-linejoin="round" fill="rgba(201,165,77,0.05)"/>
+        <!-- top edge highlight -->
+        <line x1="40" y1="70" x2="340" y2="70" stroke="#E4CB86" stroke-width="1"/>
+        <!-- front apron -->
+        <path d="M20 88 L360 88 L360 100 L20 100 Z" stroke="#9A7E38" stroke-width="1.1" fill="rgba(201,165,77,0.03)"/>
+        <!-- legs -->
+        <line x1="52" y1="100" x2="52" y2="180" stroke="#C9A54D" stroke-width="1.4"/>
+        <line x1="64" y1="100" x2="64" y2="180" stroke="#9A7E38" stroke-width="1"/>
+        <line x1="316" y1="100" x2="316" y2="180" stroke="#C9A54D" stroke-width="1.4"/>
+        <line x1="328" y1="100" x2="328" y2="180" stroke="#9A7E38" stroke-width="1"/>
+        <!-- wood grain hints on top -->
+        <line x1="70" y1="79" x2="330" y2="79" stroke="rgba(201,165,77,0.25)" stroke-width="0.6"/>
+        <line x1="60" y1="83" x2="345" y2="83" stroke="rgba(201,165,77,0.18)" stroke-width="0.6"/>
+        <!-- floor shadow -->
+        <ellipse cx="190" cy="184" rx="150" ry="6" fill="rgba(201,165,77,0.06)"/>
+      </svg>
+      <figcaption class="hero__render-caption">Product render &middot; coming soon</figcaption>
+    </figure>
+  </div>
+  <div class="hero__scroll">
+    <span>Explore</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <p class="eyebrow section__eyebrow">The Collection</p>
+      <h2 class="section__title">Tables ready to live with.</h2>
+      <p class="section__lead">Each piece is built from solid hardwood and finished by hand. In-stock tables ship in days; made-to-order pieces are crafted just for you.</p>
+    </div>
+    <div class="products__grid" id="products-grid" aria-live="polite">
+      <!-- Populated by assets/js/products.js -->
+    </div>
+  </div>
+</section>
+
+<!-- Promo slideshow -->
+<section class="section promo" id="promo" aria-label="Promotions">
+  <div class="container">
+    <div class="promo__viewport" id="promo-viewport">
+      <!-- Slides injected by assets/js/promos.js -->
+    </div>
+    <div class="promo__dots" id="promo-dots"></div>
+  </div>
+</section>
+
+<!-- Services / How it works -->
+<section class="section section--alt" id="services">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow section__eyebrow">How It Works</p>
+      <h2 class="section__title">From rough lumber<br>to your room.</h2>
+      <p class="section__lead">Every table follows the same careful path. No rushing, no shortcuts — just honest work and clear communication from first sketch to final delivery.</p>
+    </div>
+
+    <!-- Numbered process (Still template feel) -->
+    <div class="process__grid">
+      <div class="process__step">
+        <div class="process__step-num">01</div>
+        <h3 class="process__step-title">Design</h3>
+        <p class="process__step-desc">We talk through your space, your style, and how you'll use the piece. You approve dimensions, wood, and finish before a single board is cut.</p>
+      </div>
+      <div class="process__step">
+        <div class="process__step-num">02</div>
+        <h3 class="process__step-title">Build</h3>
+        <p class="process__step-desc">Your table is cut, joined, and shaped by hand from solid hardwood. We share progress photos so you watch it come together.</p>
+      </div>
+      <div class="process__step">
+        <div class="process__step-num">03</div>
+        <h3 class="process__step-title">Deliver</h3>
+        <p class="process__step-desc">Finished, sealed, and protected. We coordinate careful local delivery or crated shipping so it arrives ready to gather around.</p>
+      </div>
+    </div>
+
+    <!-- Services offered -->
+    <div class="services__list">
+      <div class="service-item">
+        <div class="service-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18"/><path d="M5 9v11"/><path d="M19 9v11"/><path d="M3 9l2-4h14l2 4"/></svg>
+        </div>
+        <h4 class="service-item__title">Custom Tables</h4>
+        <p class="service-item__desc">Dining, coffee, console, conference — built to your exact specs in the wood and finish you choose.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </div>
+        <h4 class="service-item__title">Design Consultation</h4>
+        <p class="service-item__desc">Not sure where to start? Book a 30-minute consult and we'll help you shape the perfect piece.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 9 18l-5-5"/></svg>
+        </div>
+        <h4 class="service-item__title">Refinishing &amp; Repair</h4>
+        <p class="service-item__desc">Bring an heirloom back to life. We refinish, repair, and restore solid-wood tables of any age.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <h4 class="service-item__title">Matching Sets</h4>
+        <p class="service-item__desc">Benches, sideboards, and matching pieces built from the same lumber run for a cohesive look.</p>
+      </div>
+    </div>
+
+    <!-- Call for service banner -->
+    <div class="call-service">
+      <div class="call-service__text">
+        <h3>Have a project in mind?</h3>
+        <p>Call or text us and we'll talk it through — no obligation.</p>
+      </div>
+      <div class="call-service__actions">
+        <a href="tel:+10000000000" class="btn btn--gold">📞 Call for Service</a>
+        <a href="#custom" class="btn btn--ghost">Start a Custom Order</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Custom Order -->
+<section class="section" id="custom">
+  <div class="container">
+    <div class="custom__wrap">
+      <aside>
+        <p class="eyebrow section__eyebrow">Custom Orders</p>
+        <h2 class="section__title">Tell us what<br>you're dreaming up.</h2>
+        <p class="custom__aside-lead">Share your specs and a few reference photos. We'll review your request and reach out within one business day with ideas, timeline, and a quote.</p>
+        <ul class="custom__aside-points">
+          <li>Any dimensions, any hardwood, any finish</li>
+          <li>Free design consultation on every custom build</li>
+          <li>Progress photos throughout the build</li>
+          <li>Local delivery or crated nationwide shipping</li>
+        </ul>
+      </aside>
+
+      <form class="custom-form" id="custom-order-form" novalidate>
+        <div class="custom-form__row">
+          <div class="custom-form__field">
+            <label for="co-name">Name</label>
+            <input type="text" id="co-name" name="name" autocomplete="name" required placeholder="Your full name">
+          </div>
+          <div class="custom-form__field">
+            <label for="co-email">Email</label>
+            <input type="email" id="co-email" name="email" autocomplete="email" required placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="custom-form__row">
+          <div class="custom-form__field">
+            <label for="co-phone">Phone</label>
+            <input type="tel" id="co-phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567">
+          </div>
+          <div class="custom-form__field">
+            <label for="co-type">Table Type</label>
+            <select id="co-type" name="tableType" required>
+              <option value="" disabled selected>Choose one</option>
+              <option>Dining Table</option>
+              <option>Coffee Table</option>
+              <option>Console / Entry</option>
+              <option>Conference Table</option>
+              <option>Side / End Table</option>
+              <option>Desk</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="custom-form__row">
+          <div class="custom-form__field">
+            <label for="co-wood">Wood Type</label>
+            <select id="co-wood" name="wood">
+              <option value="" disabled selected>Choose wood</option>
+              <option>Black Walnut</option>
+              <option>White Oak</option>
+              <option>Maple</option>
+              <option>Cherry</option>
+              <option>Ash</option>
+              <option>Reclaimed / Mixed</option>
+              <option>Not sure — help me choose</option>
+            </select>
+          </div>
+          <div class="custom-form__field">
+            <label for="co-finish">Finish</label>
+            <select id="co-finish" name="finish">
+              <option value="" disabled selected>Choose finish</option>
+              <option>Natural matte oil</option>
+              <option>Satin polyurethane</option>
+              <option>Hand-rubbed wax</option>
+              <option>Stained (specify in notes)</option>
+              <option>Epoxy accent</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="custom-form__row">
+          <div class="custom-form__field">
+            <label for="co-dims">Approx. Dimensions</label>
+            <input type="text" id="co-dims" name="dimensions" placeholder='e.g. 72" L × 38" W × 30" H'>
+          </div>
+          <div class="custom-form__field">
+            <label for="co-budget">Budget Range</label>
+            <select id="co-budget" name="budget">
+              <option value="" disabled selected>Optional</option>
+              <option>Under $750</option>
+              <option>$750 – $1,500</option>
+              <option>$1,500 – $3,000</option>
+              <option>$3,000 – $5,000</option>
+              <option>$5,000+</option>
+            </select>
+          </div>
+        </div>
+        <div class="custom-form__field">
+          <label for="co-notes">Project Details</label>
+          <textarea id="co-notes" name="notes" placeholder="Tell us about the space, the style you love, deadlines, or anything else that helps us build the right piece."></textarea>
+        </div>
+
+        <!-- Photo upload (inspiration / reference photos) -->
+        <div class="custom-form__field">
+          <label>Reference Photos (optional)</label>
+          <label class="custom-upload" id="co-dropzone" for="co-photos">
+            <div class="custom-upload__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+            </div>
+            <div class="custom-upload__text"><b>Tap to upload</b> or drag photos here — up to 6 images</div>
+            <input type="file" id="co-photos" name="photos" accept="image/*" multiple>
+          </label>
+          <div class="custom-upload__previews" id="co-previews"></div>
+        </div>
+
+        <button type="submit" class="btn btn--gold custom-form__submit" id="co-submit">Send My Custom Request →</button>
+        <p class="custom-form__status" id="co-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section section--alt" id="testimonials">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <p class="eyebrow section__eyebrow">Kind Words</p>
+      <h2 class="section__title">Tables that<br>get talked about.</h2>
+    </div>
+
+    <!-- Text testimonials (Still template style) -->
+    <div class="testimonials__quotes">
+      <blockquote class="quote">
+        <p class="quote__text">"It's the first piece of furniture we've owned that feels like it was made for us. Because it was."</p>
+        <cite class="quote__author">Maren &amp; Cole &middot; Dining Table</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p class="quote__text">"Brandon walked me through every step and sent photos the whole way. The craftsmanship is unreal."</p>
+        <cite class="quote__author">Jonas R. &middot; Live-Edge Desk</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p class="quote__text">"Ten years from now this table will still be the best thing in our house. Worth every penny."</p>
+        <cite class="quote__author">Priya &amp; Sam &middot; Farmhouse Table</cite>
+      </blockquote>
+    </div>
+
+    <!-- Video testimonials -->
+    <div class="testimonials__videos" id="video-testimonials">
+      <!-- Populated by assets/js/testimonials.js (falls back to placeholders) -->
+    </div>
+  </div>
+</section>
+
+<!-- Founders -->
+<section class="section" id="founders">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow section__eyebrow">The Makers</p>
+      <h2 class="section__title">The hands behind<br>every table.</h2>
+      <p class="section__lead">Tucan Designs is a small, family-run shop. We know every board that comes through our doors and every home our tables end up in.</p>
+    </div>
+
+    <div class="founders__grid">
+      <article class="founder">
+        <div class="founder__photo">
+          <!-- Replace with <img src="assets/images/brandon.jpg" alt="Brandon"> -->
+          <span class="founder__photo-initials">B</span>
+        </div>
+        <div class="founder__info">
+          <h3 class="founder__name">Brandon</h3>
+          <p class="founder__role">Founder &amp; Master Craftsman</p>
+          <p class="founder__bio">Brandon founded Tucan Designs with a simple belief: furniture should be built to outlive its makers. With years at the workbench, he designs and hand-builds every table, obsessing over joinery, grain, and the way a finish catches the light. When he's not in the shop, he's sourcing the next perfect slab.</p>
+        </div>
+      </article>
+
+      <article class="founder">
+        <div class="founder__photo">
+          <span class="founder__photo-initials">T</span>
+        </div>
+        <div class="founder__info">
+          <h3 class="founder__name">The Tucan Team</h3>
+          <p class="founder__role">Design &amp; Delivery</p>
+          <p class="founder__bio">Behind every build is a small crew that keeps things moving — helping clients dream up their pieces, sharing progress along the way, and making sure each table arrives safely and on time. We treat your project like it's going in our own home.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Payment / Deposit -->
+<section class="section section--alt" id="pay">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <p class="eyebrow section__eyebrow">Secure Checkout</p>
+      <h2 class="section__title">Pay a deposit or<br>settle your balance.</h2>
+      <p class="section__lead">Enter your invoice amount and pay securely by card or PayPal. Have a promo code? Discounts are applied automatically during active sales.</p>
+    </div>
+
+    <div class="pay__wrap">
+      <div class="pay__card">
+        <div class="pay__field">
+          <label for="pay-name">Name / Invoice Reference</label>
+          <input type="text" id="pay-name" placeholder="Your name or invoice #">
+        </div>
+        <div class="pay__field">
+          <label for="pay-amount">Amount (USD)</label>
+          <div class="pay__amount-input">
+            <input type="number" id="pay-amount" min="1" step="1" placeholder="0" inputmode="decimal">
+          </div>
+        </div>
+        <p class="pay__discount" id="pay-discount" aria-live="polite"></p>
+
+        <!-- PayPal SDK buttons render here -->
+        <div class="pay__buttons" id="paypal-buttons"></div>
+        <p class="pay__status" id="pay-status" aria-live="polite"></p>
+        <p class="pay__note">🔒 Payments are processed securely by PayPal. No card details touch our site.</p>
+
+        <!-- Fallback manual methods -->
+        <div class="pay__fallback">
+          <p>Prefer another way to pay?</p>
+          <div class="pay__fallback-methods">
+            <a class="pay__method" href="tel:+10000000000">Call to pay by phone</a>
+            <a class="pay__method" href="mailto:hello@tucandesigns.com?subject=Payment%20Question">Email us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Consultation booking -->
+<section class="section" id="consultation">
+  <div class="container">
+    <div class="consult__wrap">
+      <p class="eyebrow section__eyebrow">Free Consultation</p>
+      <h2 class="section__title">Book a 30-minute<br>design chat.</h2>
+      <div class="consult__meta" style="margin-top:1.5rem;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span><b>30 minutes</b> &middot; free &middot; by phone or video</span>
+      </div>
+      <p class="section__lead" style="max-width:520px;margin:1rem auto 0;">Pick a time that works for you and we'll talk through your project — dimensions, wood, finish, budget, and timeline. No pressure, just ideas.</p>
+
+      <!-- Google Calendar Appointment Scheduling embed.
+           Replace GCAL_APPT_URL below with Brandon's real appointment link:
+           calendar.google.com → Appointment schedules → Share → copy the
+           "booking page" URL, then set data-appt on this element. -->
+      <div class="consult__embed" id="consult-embed" data-appt="">
+        <div class="consult__placeholder">
+          <p>Online booking is being set up. In the meantime, reach out and we'll find a time.</p>
+          <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+            <a class="btn btn--gold" href="tel:+10000000000">📞 Call to Book</a>
+            <a class="btn btn--ghost" href="mailto:hello@tucandesigns.com?subject=Consultation%20Request">✉️ Email Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="section section--alt" id="newsletter">
+  <div class="container">
+    <div class="newsletter">
+      <h2 class="newsletter__title">Join the list.</h2>
+      <p class="newsletter__lead">New pieces, seasonal sales, and the occasional look inside the shop. No spam — just good tables.</p>
+      <form class="newsletter__form" id="newsletter-form" novalidate>
+        <input type="email" id="nl-email" name="email" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
+        <button type="submit" class="btn btn--gold" id="nl-submit">Subscribe</button>
+      </form>
+      <p class="newsletter__status" id="nl-status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- Sections injected below in subsequent tasks -->
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">Tucan <b>Designs</b> LLC</div>
+        <p class="footer__tagline">Handcrafted tables built to order. Solid wood, timeless design, made with care.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <a href="#products">Tables</a>
+        <a href="#services">Services</a>
+        <a href="#custom">Custom Orders</a>
+        <a href="#founders">About Us</a>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <a href="#consultation">Book a Consultation</a>
+        <a href="tel:+10000000000">Call for Service</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="mailto:hello@tucandesigns.com">Email Us</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Tucan Designs LLC. All rights reserved.</span>
+      <span>Logo coming soon</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/promos.js"></script>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/custom-order.js"></script>
+<script src="assets/js/testimonials.js"></script>
+<script src="assets/js/payment.js"></script>
+<script src="assets/js/engage.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
