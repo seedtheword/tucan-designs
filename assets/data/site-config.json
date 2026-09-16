@@ -1,5 +1,5 @@
-{
-  "_help": "Tucan Designs site configuration. Fill these in once the backend + PayPal are set up. Leave a value as an empty string to keep that feature in its safe fallback mode (custom orders and newsletter fall back to mailto; payments show a 'being set up' note; consultation shows call/email).",
+﻿{
+  "_help": "TuKan Designs site configuration. Fill these in once the backend + PayPal are set up. Leave a value as an empty string to keep that feature in its safe fallback mode (custom orders and newsletter fall back to mailto; payments show a 'being set up' note; consultation shows call/email).",
 
   "orderHandlerUrl": "",
   "_orderHandlerUrl_note": "Google Apps Script Web App URL (deployed as 'Anyone' access). Handles action:'customOrder', 'consultation', 'newsletter', and 'paymentLog'. See docs/apps-script/order-handler.gs and SETUP.md.",

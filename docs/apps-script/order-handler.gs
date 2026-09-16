@@ -1,5 +1,5 @@
-/* ============================================================
-   Tucan Designs — Order Handler (Google Apps Script Web App)
+﻿/* ============================================================
+   TuKan Designs â€” Order Handler (Google Apps Script Web App)
    ------------------------------------------------------------
    Handles three actions POSTed from the website:
 
@@ -11,7 +11,7 @@
      action: 'paymentLog'   -> logs a completed PayPal payment to the
                                "Payments" sheet.
 
-   HOW TO DEPLOY (short version — full steps in SETUP.md):
+   HOW TO DEPLOY (short version â€” full steps in SETUP.md):
      1. Create a Google Sheet. Copy its ID into SHEET_ID below.
      2. Create a Drive folder for order photos. Copy its ID into
         DRIVE_FOLDER_ID below.
@@ -53,7 +53,7 @@ function doPost(e) {
 
 // Simple GET so you can sanity-check the deployment in a browser.
 function doGet() {
-  return _json({ ok: true, service: 'Tucan Designs order handler', ts: new Date().toISOString() });
+  return _json({ ok: true, service: 'TuKan Designs order handler', ts: new Date().toISOString() });
 }
 
 /* ---------------- Custom order ---------------- */
@@ -73,7 +73,7 @@ function handleCustomOrder(body) {
   var photos = body.photos || [];
   if (photos.length) {
     var parent = DriveApp.getFolderById(DRIVE_FOLDER_ID);
-    var folder = parent.createFolder(stamp + ' — ' + safeName);
+    var folder = parent.createFolder(stamp + ' â€” ' + safeName);
     for (var i = 0; i < photos.length; i++) {
       var p = photos[i];
       var dataUrl = p && (p.data || p.dataUrl);
@@ -101,7 +101,7 @@ function handleCustomOrder(body) {
     try {
       MailApp.sendEmail({
         to: NOTIFY_EMAIL,
-        subject: 'New custom order — ' + (body.name || 'Unknown'),
+        subject: 'New custom order â€” ' + (body.name || 'Unknown'),
         body: [
           'A new custom table order came in:', '',
           'Name: ' + (body.name || ''),
@@ -140,7 +140,7 @@ function handleConsultation(body) {
       MailApp.sendEmail({
         to: NOTIFY_EMAIL,
         replyTo: body.email || NOTIFY_EMAIL,
-        subject: 'New consultation request — ' + (body.name || 'Unknown'),
+        subject: 'New consultation request â€” ' + (body.name || 'Unknown'),
         body: [
           'Someone requested a free consultation on the website:', '',
           'Name: ' + (body.name || ''),

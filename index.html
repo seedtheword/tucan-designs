@@ -3,21 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tucan Designs LLC — Handcrafted Tables</title>
-  <meta name="description" content="Tucan Designs LLC — handcrafted custom tables built to order. Solid wood, timeless design, made in the USA.">
-  <meta property="og:site_name" content="Tucan Designs LLC">
-  <meta property="og:title" content="Tucan Designs LLC — Handcrafted Tables">
-  <meta property="og:description" content="Custom tables built to order. Solid wood, timeless craftsmanship.">
+
+  <!-- Primary SEO -->
+  <title>TuKan Designs LLC — Handcrafted Custom Wood Tables</title>
+  <meta name="description" content="TuKan Designs LLC builds handcrafted solid-wood tables to order — dining, coffee, console, conference and live-edge pieces. Custom sizes, woods, and finishes. Request a free consultation.">
+  <meta name="keywords" content="custom wood tables, handmade dining table, live edge table, solid wood furniture, woodworking, TuKan Designs">
+  <meta name="author" content="TuKan Designs LLC">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0C0B0A">
+  <link rel="canonical" href="https://seedtheword.github.io/tucan-designs/">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="TuKan Designs LLC">
+  <meta property="og:title" content="TuKan Designs LLC — Handcrafted Custom Wood Tables">
+  <meta property="og:description" content="Handcrafted solid-wood tables built to order. Custom sizes, woods, and finishes. Request a free consultation.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seedtheword.github.io/tucan-designs/">
+  <meta property="og:image" content="https://seedtheword.github.io/tucan-designs/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A handcrafted live-edge solid-wood table by TuKan Designs">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TuKan Designs LLC — Handcrafted Custom Wood Tables">
+  <meta name="twitter:description" content="Handcrafted solid-wood tables built to order. Custom sizes, woods, and finishes.">
+  <meta name="twitter:image" content="https://seedtheword.github.io/tucan-designs/assets/images/og-image.jpg">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=Pinyon+Script&display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Structured data: LocalBusiness (furniture maker) + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "HomeGoodsStore"],
+        "@id": "https://seedtheword.github.io/tucan-designs/#business",
+        "name": "TuKan Designs LLC",
+        "description": "Handcrafted solid-wood tables built to order — dining, coffee, console, conference and live-edge pieces in custom sizes, woods, and finishes.",
+        "url": "https://seedtheword.github.io/tucan-designs/",
+        "image": "https://seedtheword.github.io/tucan-designs/assets/images/og-image.jpg",
+        "email": "hello@tucandesigns.com",
+        "priceRange": "$$-$$$",
+        "areaServed": "US",
+        "knowsAbout": ["custom woodworking", "solid wood dining tables", "live-edge tables", "furniture refinishing"],
+        "makesOffer": {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Custom handcrafted wood table",
+            "category": "Furniture"
+          }
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://seedtheword.github.io/tucan-designs/#website",
+        "url": "https://seedtheword.github.io/tucan-designs/",
+        "name": "TuKan Designs LLC",
+        "publisher": { "@id": "https://seedtheword.github.io/tucan-designs/#business" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
 <!-- Intro: a wrapped "gift box" — a golden ribbon seam draws across the center,
      then a click splits the two halves apart to reveal the site.
      Shows once per session. Hidden if JS is off. -->
-<div class="intro" id="intro" role="dialog" aria-label="Enter Tucan Designs">
+<div class="intro" id="intro" role="dialog" aria-label="Enter TuKan Designs">
   <!-- The two box halves that peel apart on open -->
   <div class="intro__half intro__half--top"></div>
   <div class="intro__half intro__half--bottom"></div>
@@ -49,10 +106,10 @@
 
   <!-- Centered content, sits above the seam with its own glow -->
   <div class="intro__content">
-    <div class="intro__logo" title="Tucan Designs">
+    <div class="intro__logo" title="TuKan Designs">
       <span class="intro__mono-t">T</span>
     </div>
-    <p class="intro__brand"><span class="cursive-t">T</span>ucan <b>Designs</b></p>
+    <p class="intro__brand"><span class="cursive-t">T</span>uKan <b>Designs</b></p>
     <button type="button" class="intro__enter" id="intro-enter">Click to open</button>
   </div>
 </div>
@@ -68,7 +125,7 @@
 
 <!-- Nav -->
 <header class="nav" id="nav">
-  <a href="index.html" class="nav__brand"><span class="cursive-t">T</span>ucan <b>Designs</b></a>
+  <a href="index.html" class="nav__brand" aria-label="TuKan Designs LLC — home"><span class="cursive-t">T</span>uKan <b>Designs</b></a>
   <nav class="nav__links">
     <a href="#products">Tables</a>
     <a href="#services">Services</a>
@@ -85,14 +142,14 @@
   <!-- Full-bleed cinematic background (slow Ken Burns drift) -->
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="hero__inner">
-    <!-- Logo placeholder (monogram) until the real Tucan Designs logo is ready -->
+    <!-- Logo placeholder (monogram) until the real TuKan Designs logo is ready -->
     <div class="hero__logo" title="Logo coming soon">
       <span class="hero__logo-ring"></span>
       <span class="hero__logo-mark hero__logo-mark--script">T</span>
     </div>
     <p class="eyebrow hero__eyebrow">Handcrafted &middot; Built to Order</p>
     <h1 class="hero__title">Tables made to <em>last a lifetime.</em></h1>
-    <p class="hero__lead">Solid-wood craftsmanship, timeless design, and a finish that ages beautifully. Every Tucan Designs table is built by hand, to your specifications.</p>
+    <p class="hero__lead">Solid-wood craftsmanship, timeless design, and a finish that ages beautifully. Every TuKan Designs table is built by hand, to your specifications.</p>
     <div class="hero__ctas">
       <a href="#products" class="btn btn--gold">Shop Tables</a>
       <a href="#custom" class="btn btn--ghost">Start a Custom Order</a>
@@ -361,7 +418,7 @@
     <div class="section__head" data-reveal>
       <p class="eyebrow section__eyebrow">The Makers</p>
       <h2 class="section__title">The hands behind<br>every table.</h2>
-      <p class="section__lead">Tucan Designs is a small, family-run shop. We know every board that comes through our doors and every home our tables end up in.</p>
+      <p class="section__lead">TuKan Designs is a small, family-run shop. We know every board that comes through our doors and every home our tables end up in.</p>
     </div>
 
     <div class="founders__grid">
@@ -373,17 +430,17 @@
         <div class="founder__info">
           <h3 class="founder__name">Brandon</h3>
           <p class="founder__role">Founder &amp; Master Craftsman</p>
-          <p class="founder__bio">Brandon founded Tucan Designs with a simple belief: furniture should be built to outlive its makers. With years at the workbench, he designs and hand-builds every table, obsessing over joinery, grain, and the way a finish catches the light. When he's not in the shop, he's sourcing the next perfect slab.</p>
+          <p class="founder__bio">Brandon founded TuKan Designs with a simple belief: furniture should be built to outlive its makers. With years at the workbench, he designs and hand-builds every table, obsessing over joinery, grain, and the way a finish catches the light. When he's not in the shop, he's sourcing the next perfect slab.</p>
         </div>
       </article>
 
       <article class="founder" data-reveal data-reveal-delay="2">
         <div class="founder__photo">
           <!-- Interim workshop photo — replace with a real team photo when available -->
-          <img src="assets/images/founder-workshop.jpg" alt="The Tucan Designs workshop" loading="lazy">
+          <img src="assets/images/founder-workshop.jpg" alt="Inside the TuKan Designs woodworking workshop" loading="lazy">
         </div>
         <div class="founder__info">
-          <h3 class="founder__name">The Tucan Team</h3>
+          <h3 class="founder__name">The TuKan Team</h3>
           <p class="founder__role">Design &amp; Delivery</p>
           <p class="founder__bio">Behind every build is a small crew that keeps things moving — helping clients dream up their pieces, sharing progress along the way, and making sure each table arrives safely and on time. We treat your project like it's going in our own home.</p>
         </div>
@@ -510,7 +567,7 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <div class="footer__brand-name">Tucan <b>Designs</b> LLC</div>
+        <div class="footer__brand-name">TuKan <b>Designs</b> LLC</div>
         <p class="footer__tagline">Handcrafted tables built to order. Solid wood, timeless design, made with care.</p>
       </div>
       <div class="footer__col">
@@ -529,7 +586,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <span>&copy; 2026 Tucan Designs LLC. All rights reserved.</span>
+      <span>&copy; 2026 TuKan Designs LLC. All rights reserved.</span>
       <span>Logo coming soon</span>
     </div>
   </div>

@@ -1,5 +1,5 @@
-/* ============================================================
-   Tucan Designs — Product catalog
+﻿/* ============================================================
+   TuKan Designs â€” Product catalog
    Edit the PRODUCTS array below to add / change tables.
    Each product:
      id         unique slug
@@ -19,7 +19,7 @@ var PRODUCTS = [
     desc: 'A single-slab black walnut top with a natural live edge on a blackened steel base. Seats six comfortably.',
     price: 2400,
     wasPrice: null,
-    dims: '84" × 40" × 30"',
+    dims: '84" Ã— 40" Ã— 30"',
     image: 'assets/images/product-walnut-dining.jpg',
     status: 'in-stock'
   },
@@ -29,7 +29,7 @@ var PRODUCTS = [
     desc: 'Classic trestle farmhouse table in solid white oak with a hand-rubbed matte finish. Built to gather around for decades.',
     price: 1850,
     wasPrice: null,
-    dims: '72" × 38" × 30"',
+    dims: '72" Ã— 38" Ã— 30"',
     image: 'assets/images/product-farmhouse-oak.jpg',
     status: 'in-stock'
   },
@@ -39,7 +39,7 @@ var PRODUCTS = [
     desc: 'Curly maple top with tapered walnut legs. A quiet centerpiece for the living room.',
     price: 720,
     wasPrice: null,
-    dims: '48" × 24" × 18"',
+    dims: '48" Ã— 24" Ã— 18"',
     image: 'assets/images/product-maple-coffee.jpg',
     status: 'made-to-order'
   },
@@ -49,7 +49,7 @@ var PRODUCTS = [
     desc: 'A slim solid-cherry console for entryways and hallways, with a single dovetailed drawer.',
     price: 980,
     wasPrice: null,
-    dims: '54" × 16" × 32"',
+    dims: '54" Ã— 16" Ã— 32"',
     image: 'assets/images/product-cherry-console.jpg',
     status: 'made-to-order'
   },
@@ -59,17 +59,17 @@ var PRODUCTS = [
     desc: 'Book-matched slabs joined by a translucent gold-tinted resin river. A statement piece for offices and boardrooms.',
     price: 4200,
     wasPrice: null,
-    dims: '96" × 44" × 30"',
+    dims: '96" Ã— 44" Ã— 30"',
     image: 'assets/images/product-epoxy-conference.jpg',
     status: 'made-to-order'
   },
   {
     id: 'ash-side',
     name: 'Ash Side Table',
-    desc: 'A compact solid-ash side table with a subtle chamfered edge. The perfect first Tucan piece.',
+    desc: 'A compact solid-ash side table with a subtle chamfered edge. The perfect first TuKan piece.',
     price: 340,
     wasPrice: null,
-    dims: '20" × 20" × 24"',
+    dims: '20" Ã— 20" Ã— 24"',
     image: 'assets/images/product-ash-side.jpg',
     status: 'in-stock'
   }
@@ -106,7 +106,7 @@ var PRODUCTS = [
   function cardHtml(p) {
     var st = STATUS[p.status] || STATUS['made-to-order'];
     var media = p.image
-      ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy">'
+      ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + ' — handcrafted solid-wood table by TuKan Designs" loading="lazy" width="800" height="600">'
       : '<span class="product-card__placeholder">' + TABLE_GLYPH + '</span>';
 
     var priceHtml = p.wasPrice

@@ -1,8 +1,8 @@
-/* ============================================================
-   Tucan Designs — Video testimonials
+﻿/* ============================================================
+   TuKan Designs â€” Video testimonials
    Edit VIDEO_TESTIMONIALS to add real clips. Each entry:
      name    customer name
-     role    short descriptor (e.g. "Dining Table · Seattle")
+     role    short descriptor (e.g. "Dining Table Â· Seattle")
      type    'youtube' | 'mp4'
      src     YouTube video ID  OR  path to an .mp4 under assets/videos/
      poster  optional thumbnail image path (mp4 only)
@@ -42,7 +42,7 @@ var VIDEO_TESTIMONIALS = [
       var poster = t.poster ? ' poster="' + esc(t.poster) + '"' : '';
       return '<video preload="metadata"' + poster + '><source src="' + esc(t.src) + '" type="video/mp4"></video>' + PLAY_ICON;
     }
-    // Placeholder — no video yet
+    // Placeholder â€” no video yet
     return PLAY_ICON;
   }
 

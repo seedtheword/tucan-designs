@@ -1,8 +1,8 @@
-/* Tucan Designs — site interactions */
+﻿/* TuKan Designs â€” site interactions */
 (function () {
   'use strict';
 
-  // ── Intro: a wrapped gift box — click splits it open to reveal the site ──
+  // â”€â”€ Intro: a wrapped gift box â€” click splits it open to reveal the site â”€â”€
   (function initIntro() {
     var intro = document.getElementById('intro');
     if (!intro) return;
@@ -92,7 +92,7 @@
   var reduceMotion = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Hero photo parallax — subtle drift + scale as you scroll past the hero
+  // Hero photo parallax â€” subtle drift + scale as you scroll past the hero
   var heroRender = document.getElementById('hero-render');
   if (heroRender && !reduceMotion) {
     var heroImg = heroRender.querySelector('.hero__render-frame img');

@@ -1,5 +1,5 @@
-/* ============================================================
-   Tucan Designs — Online payments (PayPal)
+﻿/* ============================================================
+   TuKan Designs â€” Online payments (PayPal)
    Adapts the Seed the Word pattern:
    - Reads assets/data/site-config.json for { paypalClientId, paypalMode }
    - Loads the PayPal JS SDK dynamically
@@ -51,7 +51,7 @@
     if (disc && base > 0) {
       var sale = window.TucanPromos.activeSale;
       discountEl.textContent = sale.tag + ' discount applied: ' +
-        (disc * 100) + '% off — you pay $' + finalAmount().toLocaleString('en-US');
+        (disc * 100) + '% off â€” you pay $' + finalAmount().toLocaleString('en-US');
     } else {
       discountEl.textContent = '';
     }
@@ -128,7 +128,7 @@
         return actions.order.create({
           purchase_units: [{
             amount: { value: finalAmount().toFixed(2) },
-            description: 'Tucan Designs — ' + (nameInput.value.trim() || 'Table payment')
+            description: 'TuKan Designs â€” ' + (nameInput.value.trim() || 'Table payment')
           }]
         });
       },
@@ -151,10 +151,10 @@
     var cfg = await loadConfig();
     var clientId = cfg && cfg.paypalClientId;
     if (!clientId) {
-      // No PayPal configured yet — show a note; manual fallback methods already visible.
+      // No PayPal configured yet â€” show a note; manual fallback methods already visible.
       buttonsEl.innerHTML =
         '<div style="text-align:center;padding:1rem;border:1px dashed var(--border);border-radius:10px;color:var(--text-muted);font-size:0.84rem;">' +
-        'Online card payment is being set up. For now, please call or email to pay — or start a custom order and we\'ll send an invoice.' +
+        'Online card payment is being set up. For now, please call or email to pay â€” or start a custom order and we\'ll send an invoice.' +
         '</div>';
       updateDiscountLine();
       return;
