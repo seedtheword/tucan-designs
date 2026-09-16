@@ -1,4 +1,4 @@
-﻿# TuKan Designs LLC â€” Website
+# TuKan Designs LLC — Website
 
 Marketing + commerce site for **TuKan Designs LLC**, a custom hardwood table
 maker (owner: Brandon). Static front-end (HTML/CSS/vanilla JS) with an optional
@@ -19,7 +19,7 @@ assets/
     payment.js                 PayPal Smart Buttons + payment logging
     engage.js                  Newsletter + consultation request form
     main.js                    Nav, smooth scroll, animations (loads last)
-  data/site-config.json        Runtime config (URLs, PayPal, phone) â€” edit this
+  data/site-config.json        Runtime config (URLs, PayPal, phone) — edit this
   images/                      Founder photos, logo, product renders (add here)
 docs/apps-script/
   order-handler.gs             Google Apps Script Web App (backend)
@@ -28,7 +28,7 @@ docs/apps-script/
 
 ## Running locally
 
-It's a static site â€” open `index.html`, or serve the folder:
+It's a static site — open `index.html`, or serve the folder:
 
 ```
 python -m http.server 8000
@@ -46,13 +46,13 @@ Brandon (phone, photos, bios, video IDs, logo).
 
 The photos in `assets/images/` are **interim placeholders** sourced from
 [Unsplash](https://unsplash.com) (free for commercial use). Swap them for
-Brandon's own product/founder photography when available â€” the file names map
+Brandon's own product/founder photography when available — the file names map
 directly to their use:
 
-- `hero-bg.jpg` â€” full-bleed cinematic hero background (slow drift)
-- `hero-table.jpg` â€” framed hero product shot (over the background)
-- `product-*.jpg` â€” one per catalog item (see `image` field in `products.js`)
-- `founder-craftsman.jpg`, `founder-workshop.jpg` â€” founders section
+- `hero-bg.jpg` — full-bleed cinematic hero background (slow drift)
+- `hero-table.jpg` — framed hero product shot (over the background)
+- `product-*.jpg` — one per catalog item (see `image` field in `products.js`)
+- `founder-craftsman.jpg`, `founder-workshop.jpg` — founders section
 
 Photo credits (Unsplash): Ichsan Chairul, Stephan Coudassot, Lee Campbell,
 Devin Berko, Pascal Meier, Sven Mieke, ASR Design Studio, Ali Mkumbwa,
@@ -62,4 +62,4 @@ photos themselves beyond resizing.
 ## Hosting
 
 Designed for static hosting (GitHub Pages, Netlify, etc.). For GitHub Pages:
-repo **Settings â†’ Pages â†’ Deploy from branch â†’ `master` / root**.
+repo **Settings → Pages → Deploy from branch → `master` / root**.

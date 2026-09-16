@@ -1,5 +1,5 @@
-﻿/* ============================================================
-   TuKan Designs â€” Custom order form
+/* ============================================================
+   TuKan Designs — Custom order form
    - Photo upload with previews (up to 6), drag & drop
    - Prefill from a product "Order This" click
    - Submits to the backend handler (Google Apps Script or similar).
@@ -72,7 +72,7 @@
     if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files);
   });
 
-  // Prefill hook â€” called by products.js when "Order This" is clicked
+  // Prefill hook — called by products.js when "Order This" is clicked
   window.TuKanCustomOrder = {
     prefill: function (product) {
       if (!product) return;
@@ -111,7 +111,7 @@
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sendingâ€¦';
+    submitBtn.textContent = 'Sending…';
     setStatus('');
 
     var payload = {
@@ -131,18 +131,18 @@
 
     var url = await getHandlerUrl();
     if (!url) {
-      // No backend wired yet â€” fall back to an email draft so nothing is lost.
+      // No backend wired yet — fall back to an email draft so nothing is lost.
       var body = encodeURIComponent(
         'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + payload.phone +
         '\nType: ' + type + '\nWood: ' + payload.wood + '\nFinish: ' + payload.finish +
         '\nDimensions: ' + payload.dimensions + '\nBudget: ' + payload.budget +
-        '\n\n' + payload.notes + '\n\n(' + photos.length + ' photo(s) â€” please attach manually)'
+        '\n\n' + payload.notes + '\n\n(' + photos.length + ' photo(s) — please attach manually)'
       );
       window.location.href = 'mailto:hello@tukandesigns.com?subject=' +
-        encodeURIComponent('Custom Table Request â€” ' + name) + '&body=' + body;
-      setStatus('Opening your email appâ€¦ if nothing happens, email us at hello@tukandesigns.com', 'ok');
+        encodeURIComponent('Custom Table Request — ' + name) + '&body=' + body;
+      setStatus('Opening your email app… if nothing happens, email us at hello@tukandesigns.com', 'ok');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send My Custom Request â†’';
+      submitBtn.textContent = 'Send My Custom Request →';
       return;
     }
 
@@ -154,7 +154,7 @@
       }).then(function (r) { return r.json(); });
 
       if (res && res.ok) {
-        setStatus('Thank you! Your request is in â€” we\'ll reach out within one business day.', 'ok');
+        setStatus('Thank you! Your request is in — we\'ll reach out within one business day.', 'ok');
         form.reset();
         photos = [];
         renderPreviews();
@@ -165,7 +165,7 @@
       setStatus('Something went wrong. Please call or email us and we\'ll help right away.', 'err');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send My Custom Request â†’';
+      submitBtn.textContent = 'Send My Custom Request →';
     }
   });
 })();

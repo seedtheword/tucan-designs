@@ -1,4 +1,4 @@
-﻿# TuKan Designs â€” Backend & Config Setup
+# TuKan Designs — Backend & Config Setup
 
 This guide wires up the website's live features. The site works **without** any
 of this (custom orders and the newsletter fall back to opening an email draft;
@@ -15,32 +15,32 @@ empty string `""` to keep that feature in its safe fallback mode.
 This is a free Google Apps Script "Web App" that receives form submissions,
 saves uploaded photos to Google Drive, and records everything in a Google Sheet.
 
-1. **Create a Google Sheet** (sheets.new). Name it e.g. "TuKan Designs â€” Orders".
+1. **Create a Google Sheet** (sheets.new). Name it e.g. "TuKan Designs — Orders".
    From its URL copy the ID (the long string between `/d/` and `/edit`).
-2. **Create a Drive folder** for order photos (drive.google.com â†’ New â†’ Folder).
+2. **Create a Drive folder** for order photos (drive.google.com → New → Folder).
    Open it and copy the ID from the URL (after `/folders/`).
-3. In the Sheet: **Extensions â†’ Apps Script**. Delete the sample code and paste
+3. In the Sheet: **Extensions → Apps Script**. Delete the sample code and paste
    the entire contents of [`order-handler.gs`](./order-handler.gs).
 4. At the top of the script, fill in:
-   - `SHEET_ID` â†’ the Sheet ID from step 1
-   - `DRIVE_FOLDER_ID` â†’ the folder ID from step 2
-   - `NOTIFY_EMAIL` â†’ where new-order emails should go (or `''` for none)
-5. **Deploy â†’ New deployment**. Click the gear, choose **Web app**.
+   - `SHEET_ID` → the Sheet ID from step 1
+   - `DRIVE_FOLDER_ID` → the folder ID from step 2
+   - `NOTIFY_EMAIL` → where new-order emails should go (or `''` for none)
+5. **Deploy → New deployment**. Click the gear, choose **Web app**.
    - Description: `Tucan order handler`
    - Execute as: **Me**
    - Who has access: **Anyone**
    - Click **Deploy**, authorize when prompted (choose your Google account,
-     "Advanced" â†’ allow).
+     "Advanced" → allow).
 6. Copy the **Web app URL** (ends in `/exec`).
 7. Paste it into `assets/data/site-config.json` as `orderHandlerUrl`.
 
-Test it: open the `/exec` URL in a browser â€” you should see
+Test it: open the `/exec` URL in a browser — you should see
 `{"ok":true,"service":"TuKan Designs order handler",...}`.
 
 The script auto-creates three tabs on first use: **Orders**, **Newsletter**,
 **Payments**.
 
-> Re-deploying after edits: use **Deploy â†’ Manage deployments â†’ (edit) â†’ New
+> Re-deploying after edits: use **Deploy → Manage deployments → (edit) → New
 > version** so the URL stays the same.
 
 ---
@@ -49,12 +49,12 @@ The script auto-creates three tabs on first use: **Orders**, **Newsletter**,
 
 1. Go to [developer.paypal.com](https://developer.paypal.com) and log in with
    Brandon's **PayPal Business** account.
-2. **Apps & Credentials** â†’ make sure you're on **Live** (toggle top-right) â†’
+2. **Apps & Credentials** → make sure you're on **Live** (toggle top-right) →
    **Create App**. Name it "TuKan Designs Website".
 3. Copy the **Client ID**.
 4. In `assets/data/site-config.json`:
-   - `paypalClientId` â†’ the Client ID
-   - `paypalMode` â†’ `live` (or `sandbox` for testing)
+   - `paypalClientId` → the Client ID
+   - `paypalMode` → `live` (or `sandbox` for testing)
 
 Once set, the Pay section shows PayPal buttons. Seasonal discounts are applied
 automatically. Until set, the manual "call/email to pay" fallback stays visible.
@@ -63,16 +63,16 @@ automatically. Until set, the manual "call/email to pay" fallback stays visible.
 
 ## 3. 30-minute consultation requests
 
-No calendar setup needed. The consultation section is a **request form** â€”
+No calendar setup needed. The consultation section is a **request form** —
 visitors fill in their details and general availability, and it emails Brandon
 so he can reply and set up a time. The visitor sees a "we'll get back to you"
 confirmation.
 
-- It uses the **same order handler** as Â§1. Once `orderHandlerUrl` is set,
+- It uses the **same order handler** as §1. Once `orderHandlerUrl` is set,
   requests are emailed to `NOTIFY_EMAIL` (reply-to is set to the visitor's
   address, so Brandon can just hit Reply) and logged to a **Consultations** tab.
 - Until `orderHandlerUrl` is set, the form falls back to opening a pre-filled
-  email draft to `hello@tukandesigns.com` â€” nothing is lost.
+  email draft to `hello@tukandesigns.com` — nothing is lost.
 
 Nothing else to configure here.
 
@@ -80,24 +80,24 @@ Nothing else to configure here.
 
 ## 4. Contact details
 
-- `businessPhone` â†’ in `tel:` format, e.g. `+12065551234`.
+- `businessPhone` → in `tel:` format, e.g. `+12065551234`.
 - Then update the phone links in `index.html` (search for `tel:+10000000000`)
   and the display text in the footer / "Call for Service" button.
-- `businessEmail` defaults to `hello@tukandesigns.com` â€” change if needed.
+- `businessEmail` defaults to `hello@tukandesigns.com` — change if needed.
 
 ---
 
 ## 5. Still to provide from Brandon
 
 - [ ] Real business **phone number** (replaces `tel:+10000000000` placeholders)
-- [ ] **PayPal** business Client ID (see Â§2)
-- [ ] (Consultation needs no setup â€” it emails Brandon via the order handler)
-- [ ] **Founder photos** â†’ drop into `assets/images/` and replace the initials
+- [ ] **PayPal** business Client ID (see §2)
+- [ ] (Consultation needs no setup — it emails Brandon via the order handler)
+- [ ] **Founder photos** → drop into `assets/images/` and replace the initials
       placeholders in the Founders section of `index.html`
 - [ ] **Founder bios** (currently placeholder copy)
-- [ ] **Product photos** â†’ set the `image` field for each item in
+- [ ] **Product photos** → set the `image` field for each item in
       `assets/js/products.js`
-- [ ] **Video testimonial** YouTube IDs or MP4 files â†’ edit
+- [ ] **Video testimonial** YouTube IDs or MP4 files → edit
       `VIDEO_TESTIMONIALS` in `assets/js/testimonials.js`
-- [ ] **Logo** â†’ replace the monogram placeholder in the hero + nav
-- [ ] **Product render** graphic â†’ replace the SVG placeholder in the hero
+- [ ] **Logo** → replace the monogram placeholder in the hero + nav
+- [ ] **Product render** graphic → replace the SVG placeholder in the hero

@@ -1,5 +1,5 @@
-﻿/* ============================================================
-   TuKan Designs â€” Newsletter + Consultation request
+/* ============================================================
+   TuKan Designs — Newsletter + Consultation request
    - Consultation: a request form. POSTs { action:'consultation', ... }
      to the order handler (cfg.orderHandlerUrl), which emails Brandon.
      The visitor sees a "we'll get back to you" confirmation. Falls back
@@ -20,7 +20,7 @@
     return CONFIG;
   }
 
-  // â”€â”€ Consultation request form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Consultation request form ────────────────────────────────
   function initConsult() {
     var form = document.getElementById('consult-form');
     if (!form) return;
@@ -53,13 +53,13 @@
         submittedAt: new Date().toISOString()
       };
 
-      btn.disabled = true; btn.textContent = 'Sendingâ€¦';
+      btn.disabled = true; btn.textContent = 'Sending…';
       setStatus('');
 
       var cfg = await loadConfig();
       var url = cfg && cfg.orderHandlerUrl;
       if (!url) {
-        // No backend â€” open an email draft to Brandon so nothing is lost.
+        // No backend — open an email draft to Brandon so nothing is lost.
         var body = encodeURIComponent(
           'Consultation request from the website:\n\n' +
           'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + payload.phone +
@@ -68,9 +68,9 @@
           '\n\n' + (payload.notes || '(no notes)')
         );
         window.location.href = 'mailto:hello@tukandesigns.com?subject=' +
-          encodeURIComponent('Consultation Request â€” ' + name) + '&body=' + body;
-        setStatus('Opening your email app to send your requestâ€¦', 'ok');
-        btn.disabled = false; btn.textContent = 'Request My Consultation â†’';
+          encodeURIComponent('Consultation Request — ' + name) + '&body=' + body;
+        setStatus('Opening your email app to send your request…', 'ok');
+        btn.disabled = false; btn.textContent = 'Request My Consultation →';
         return;
       }
       try {
@@ -80,18 +80,18 @@
           body: JSON.stringify(payload)
         }).then(function (r) { return r.json(); });
         if (res && res.ok) {
-          setStatus('Thanks, ' + name.split(' ')[0] + '! Your request is in â€” we\'ll get back to you by email to set up a time.', 'ok');
+          setStatus('Thanks, ' + name.split(' ')[0] + '! Your request is in — we\'ll get back to you by email to set up a time.', 'ok');
           form.reset();
         } else { throw new Error((res && res.error) || 'failed'); }
       } catch (err) {
         setStatus('Something went wrong. Please try again, or call/email us directly.', 'err');
       } finally {
-        btn.disabled = false; btn.textContent = 'Request My Consultation â†’';
+        btn.disabled = false; btn.textContent = 'Request My Consultation →';
       }
     });
   }
 
-  // â”€â”€ Newsletter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Newsletter ───────────────────────────────────────────────
   function initNewsletter() {
     var form = document.getElementById('newsletter-form');
     if (!form) return;
@@ -109,17 +109,17 @@
       var email = emailInput.value.trim();
       if (!email || email.indexOf('@') === -1) { setStatus('Please enter a valid email.', 'err'); return; }
 
-      btn.disabled = true; btn.textContent = 'â€¦';
+      btn.disabled = true; btn.textContent = '…';
       setStatus('');
 
       var cfg = await loadConfig();
       var url = cfg && cfg.orderHandlerUrl;
       if (!url) {
-        // No backend â€” open an email to subscribe manually.
+        // No backend — open an email to subscribe manually.
         window.location.href = 'mailto:hello@tukandesigns.com?subject=' +
           encodeURIComponent('Newsletter signup') + '&body=' +
           encodeURIComponent('Please add me to the TuKan Designs list: ' + email);
-        setStatus('Opening your email app to confirmâ€¦', 'ok');
+        setStatus('Opening your email app to confirm…', 'ok');
         btn.disabled = false; btn.textContent = 'Subscribe';
         return;
       }

@@ -1,4 +1,4 @@
-﻿{
+{
   "_help": "TuKan Designs site configuration. Fill these in once the backend + PayPal are set up. Leave a value as an empty string to keep that feature in its safe fallback mode (custom orders and newsletter fall back to mailto; payments show a 'being set up' note; consultation shows call/email).",
 
   "orderHandlerUrl": "",

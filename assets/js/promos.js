@@ -1,5 +1,5 @@
-﻿/* ============================================================
-   TuKan Designs â€” Promos & seasonal sales
+/* ============================================================
+   TuKan Designs — Promos & seasonal sales
    1. Top sale bar: auto-detects the active seasonal promo by date
       (Labor Day, Black Friday, Cyber Monday) and shows a dismissible
       banner. Dismissal is remembered per-promo via localStorage.
@@ -15,7 +15,7 @@
   // Helper: build a Date at local midnight
   function d(y, m, day) { return new Date(y, m, day, 0, 0, 0); }
 
-  // â”€â”€ Seasonal sales windows (update yearly) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Seasonal sales windows (update yearly) ──────────────────
   // Labor Day = first Monday of September. Black Friday = day after
   // 4th Thursday of November. Cyber Monday = following Monday.
   function laborDay(y) {
@@ -41,7 +41,7 @@
     {
       id: 'labor-day-' + YEAR,
       tag: 'Labor Day',
-      msg: 'Labor Day Sale â€” 15% off all in-stock tables.',
+      msg: 'Labor Day Sale — 15% off all in-stock tables.',
       code: 'LABOR15',
       start: new Date(ld.getFullYear(), ld.getMonth(), ld.getDate() - 4), // Thu before
       end: new Date(ld.getFullYear(), ld.getMonth(), ld.getDate() + 1, 23, 59, 59),
@@ -55,7 +55,7 @@
     {
       id: 'black-friday-' + YEAR,
       tag: 'Black Friday',
-      msg: 'Black Friday â€” 20% off in-stock tables + free local delivery.',
+      msg: 'Black Friday — 20% off in-stock tables + free local delivery.',
       code: 'BLACK20',
       start: new Date(blackFriday.getFullYear(), blackFriday.getMonth(), blackFriday.getDate(), 0, 0, 0),
       end: new Date(blackFriday.getFullYear(), blackFriday.getMonth(), blackFriday.getDate(), 23, 59, 59),
@@ -69,7 +69,7 @@
     {
       id: 'cyber-monday-' + YEAR,
       tag: 'Cyber Monday',
-      msg: 'Cyber Monday â€” 20% off custom orders placed today.',
+      msg: 'Cyber Monday — 20% off custom orders placed today.',
       code: 'CYBER20',
       start: new Date(cyberMonday.getFullYear(), cyberMonday.getMonth(), cyberMonday.getDate(), 0, 0, 0),
       end: new Date(cyberMonday.getFullYear(), cyberMonday.getMonth(), cyberMonday.getDate(), 23, 59, 59),
@@ -90,7 +90,7 @@
     return null;
   }
 
-  // â”€â”€ Sale bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Sale bar ─────────────────────────────────────────────────
   var sale = activeSale();
   var bar = document.getElementById('sale-bar');
   if (bar && sale) {
@@ -109,13 +109,13 @@
     }
   }
 
-  // â”€â”€ Promo slideshow â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Promo slideshow ──────────────────────────────────────────
   // Evergreen slides always show; the active sale slide is prepended.
   var slides = [
     {
       tag: 'Built to Order',
       title: 'A table is where <em>life happens.</em>',
-      desc: 'Meals, homework, late-night talks. We build the piece that holds all of it â€” for generations.',
+      desc: 'Meals, homework, late-night talks. We build the piece that holds all of it — for generations.',
       cta: { label: 'Explore Tables', href: '#products' }
     },
     {
