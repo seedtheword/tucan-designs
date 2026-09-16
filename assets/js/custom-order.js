@@ -73,7 +73,7 @@
   });
 
   // Prefill hook â€” called by products.js when "Order This" is clicked
-  window.TucanCustomOrder = {
+  window.TuKanCustomOrder = {
     prefill: function (product) {
       if (!product) return;
       var notes = document.getElementById('co-notes');
@@ -138,9 +138,9 @@
         '\nDimensions: ' + payload.dimensions + '\nBudget: ' + payload.budget +
         '\n\n' + payload.notes + '\n\n(' + photos.length + ' photo(s) â€” please attach manually)'
       );
-      window.location.href = 'mailto:hello@tucandesigns.com?subject=' +
+      window.location.href = 'mailto:hello@tukandesigns.com?subject=' +
         encodeURIComponent('Custom Table Request â€” ' + name) + '&body=' + body;
-      setStatus('Opening your email appâ€¦ if nothing happens, email us at hello@tucandesigns.com', 'ok');
+      setStatus('Opening your email appâ€¦ if nothing happens, email us at hello@tukandesigns.com', 'ok');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send My Custom Request â†’';
       return;

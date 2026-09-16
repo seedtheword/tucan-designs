@@ -95,7 +95,7 @@
   var bar = document.getElementById('sale-bar');
   if (bar && sale) {
     var dismissed = false;
-    try { dismissed = localStorage.getItem('tucan-sale-dismissed') === sale.id; } catch (_) {}
+    try { dismissed = localStorage.getItem('tukan-sale-dismissed') === sale.id; } catch (_) {}
     if (!dismissed) {
       document.getElementById('sale-bar-tag').textContent = sale.tag;
       document.getElementById('sale-bar-msg').textContent = sale.msg + ' Use code ' + sale.code + '.';
@@ -104,7 +104,7 @@
       document.getElementById('sale-bar-close').addEventListener('click', function () {
         bar.hidden = true;
         document.body.classList.remove('has-sale-bar');
-        try { localStorage.setItem('tucan-sale-dismissed', sale.id); } catch (_) {}
+        try { localStorage.setItem('tukan-sale-dismissed', sale.id); } catch (_) {}
       });
     }
   }
@@ -181,5 +181,5 @@
   }
 
   // Expose active sale so the payment/product modules can apply discounts
-  window.TucanPromos = { activeSale: sale };
+  window.TuKanPromos = { activeSale: sale };
 })();

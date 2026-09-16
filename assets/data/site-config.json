@@ -9,6 +9,6 @@
   "_paypal_note": "paypalClientId = the Client ID from Brandon's PayPal business app (developer.paypal.com). paypalMode is 'live' or 'sandbox'. Leave clientId empty to keep manual payment fallback.",
 
   "businessPhone": "",
-  "businessEmail": "hello@tucandesigns.com",
+  "businessEmail": "hello@tukandesigns.com",
   "_contact_note": "businessPhone in tel: format e.g. +12065551234. Update the tel: links in index.html to match once known."
 }

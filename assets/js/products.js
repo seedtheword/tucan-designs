@@ -153,8 +153,8 @@ var PRODUCTS = [
       btn.addEventListener('click', function () {
         var id = this.getAttribute('data-product');
         var p = PRODUCTS.filter(function (x) { return x.id === id; })[0];
-        if (p && window.TucanCustomOrder && typeof window.TucanCustomOrder.prefill === 'function') {
-          window.TucanCustomOrder.prefill(p);
+        if (p && window.TuKanCustomOrder && typeof window.TuKanCustomOrder.prefill === 'function') {
+          window.TuKanCustomOrder.prefill(p);
         }
       });
     });
@@ -167,5 +167,5 @@ var PRODUCTS = [
   }
 
   // Expose for other modules (sales promo can rewrite prices, etc.)
-  window.TucanProducts = { list: PRODUCTS, render: render };
+  window.TuKanProducts = { list: PRODUCTS, render: render };
 })();

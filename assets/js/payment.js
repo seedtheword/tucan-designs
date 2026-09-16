@@ -5,7 +5,7 @@
    - Loads the PayPal JS SDK dynamically
    - Renders Smart Payment Buttons that create/capture an order for the
      amount entered (card + PayPal + Pay Later in one integration)
-   - Applies any active seasonal discount from window.TucanPromos
+   - Applies any active seasonal discount from window.TuKanPromos
    Until a real paypalClientId is configured, the section shows the manual
    fallback methods and a friendly note.
    ============================================================ */
@@ -30,7 +30,7 @@
 
   // Active seasonal discount (0..1) from promos.js, if any
   function currentDiscount() {
-    var sale = (window.TucanPromos && window.TucanPromos.activeSale) || null;
+    var sale = (window.TuKanPromos && window.TuKanPromos.activeSale) || null;
     return sale && sale.discount ? sale.discount : 0;
   }
 
@@ -49,7 +49,7 @@
     var disc = currentDiscount();
     var base = baseAmount();
     if (disc && base > 0) {
-      var sale = window.TucanPromos.activeSale;
+      var sale = window.TuKanPromos.activeSale;
       discountEl.textContent = sale.tag + ' discount applied: ' +
         (disc * 100) + '% off â€” you pay $' + finalAmount().toLocaleString('en-US');
     } else {

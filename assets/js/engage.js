@@ -67,7 +67,7 @@
           '\nAvailability: ' + payload.availability +
           '\n\n' + (payload.notes || '(no notes)')
         );
-        window.location.href = 'mailto:hello@tucandesigns.com?subject=' +
+        window.location.href = 'mailto:hello@tukandesigns.com?subject=' +
           encodeURIComponent('Consultation Request â€” ' + name) + '&body=' + body;
         setStatus('Opening your email app to send your requestâ€¦', 'ok');
         btn.disabled = false; btn.textContent = 'Request My Consultation â†’';
@@ -116,7 +116,7 @@
       var url = cfg && cfg.orderHandlerUrl;
       if (!url) {
         // No backend â€” open an email to subscribe manually.
-        window.location.href = 'mailto:hello@tucandesigns.com?subject=' +
+        window.location.href = 'mailto:hello@tukandesigns.com?subject=' +
           encodeURIComponent('Newsletter signup') + '&body=' +
           encodeURIComponent('Please add me to the TuKan Designs list: ' + email);
         setStatus('Opening your email app to confirmâ€¦', 'ok');
@@ -127,7 +127,7 @@
         var res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action: 'newsletter', email: email, source: 'tucan-website' })
+          body: JSON.stringify({ action: 'newsletter', email: email, source: 'tukan-website' })
         }).then(function (r) { return r.json(); });
         if (res && res.ok) {
           setStatus('You\'re in! Watch your inbox for new pieces and sales.', 'ok');

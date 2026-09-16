@@ -8,7 +8,7 @@
     if (!intro) return;
 
     // Show once per browser session (not on every page navigation)
-    var SEEN_KEY = 'tucan-intro-seen';
+    var SEEN_KEY = 'tukan-intro-seen';
     var alreadySeen = false;
     try { alreadySeen = sessionStorage.getItem(SEEN_KEY) === '1'; } catch (_) {}
     if (alreadySeen) { intro.classList.add('is-done'); return; }

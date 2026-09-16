@@ -29,7 +29,7 @@
 var SHEET_ID        = 'PASTE_GOOGLE_SHEET_ID_HERE';
 var DRIVE_FOLDER_ID = 'PASTE_DRIVE_FOLDER_ID_HERE';
 // Where to email new-order notifications (blank = no email sent).
-var NOTIFY_EMAIL    = 'hello@tucandesigns.com';
+var NOTIFY_EMAIL    = 'hello@tukandesigns.com';
 // -------------------------------------------------------------------
 
 function doPost(e) {

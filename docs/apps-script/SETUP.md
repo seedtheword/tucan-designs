@@ -72,7 +72,7 @@ confirmation.
   requests are emailed to `NOTIFY_EMAIL` (reply-to is set to the visitor's
   address, so Brandon can just hit Reply) and logged to a **Consultations** tab.
 - Until `orderHandlerUrl` is set, the form falls back to opening a pre-filled
-  email draft to `hello@tucandesigns.com` â€” nothing is lost.
+  email draft to `hello@tukandesigns.com` â€” nothing is lost.
 
 Nothing else to configure here.
 
@@ -83,7 +83,7 @@ Nothing else to configure here.
 - `businessPhone` â†’ in `tel:` format, e.g. `+12065551234`.
 - Then update the phone links in `index.html` (search for `tel:+10000000000`)
   and the display text in the footer / "Call for Service" button.
-- `businessEmail` defaults to `hello@tucandesigns.com` â€” change if needed.
+- `businessEmail` defaults to `hello@tukandesigns.com` â€” change if needed.
 
 ---
 
