@@ -31,15 +31,100 @@
       }
     }
 
+    // ── Effect A: letter-morph (shared letters stay, others fade/slide) ──
+    // Renders `text` into `el` as per-letter spans. When morphing to a new
+    // word, letters already present in the same slot animate in place; the
+    // rest fade out / fade in — the componentry/motion-primitives mechanic.
+    function makeLetterMorph(el) {
+      if (!el) return { to: function () {} };
+      function render(text, animate, goldWord) {
+        // Fade current chars out
+        if (animate) {
+          var old = el.querySelectorAll('.tm-char');
+          for (var k = 0; k < old.length; k++) old[k].classList.add('tm-out');
+        }
+        var build = function () {
+          el.textContent = '';
+          for (var i = 0; i < text.length; i++) {
+            var ch = text[i];
+            var span = document.createElement('span');
+            span.className = 'tm-char' + (ch === ' ' ? ' is-space' : '') +
+              (goldWord ? ' gold' : '');
+            span.textContent = ch === ' ' ? '\u00a0' : ch;
+            if (animate) {
+              span.classList.add('tm-in');
+              // stagger each letter's entrance
+              (function (s, d) {
+                window.setTimeout(function () { s.classList.remove('tm-in'); }, 40 + d * 34);
+              })(span, i);
+            }
+            el.appendChild(span);
+          }
+        };
+        if (animate) window.setTimeout(build, 300); else build();
+      }
+      var fromWord = el.getAttribute('data-morph-from') || '';
+      render(fromWord, false, false);
+      return {
+        to: function () {
+          var toWord = el.getAttribute('data-morph-to') || fromWord;
+          render(toWord, !reduceMotion, true);
+        }
+      };
+    }
+
+    // ── Effect B: gooey blur morph — cycles words through the SVG filter ──
+    function makeGooeyMorph(el) {
+      if (!el) return { settle: function () {} };
+      var words = (el.getAttribute('data-gooey-words') || '').split(',')
+        .map(function (w) { return w.trim(); }).filter(Boolean);
+      var a = el.querySelector('.gooey-morph__a');
+      var b = el.querySelector('.gooey-morph__b');
+      if (!words.length || !a || !b) return { settle: function () {} };
+      var idx = 0, showingA = true, timer = null;
+      a.textContent = words[0];
+      function step() {
+        var next = words[(idx + 1) % words.length];
+        var incoming = showingA ? b : a;
+        var outgoing = showingA ? a : b;
+        incoming.textContent = next;
+        incoming.style.opacity = '1';
+        outgoing.style.opacity = '0';
+        showingA = !showingA; idx = (idx + 1) % words.length;
+      }
+      if (!reduceMotion) timer = window.setInterval(step, 1600);
+      return {
+        settle: function () {
+          if (timer) { window.clearInterval(timer); timer = null; }
+          // Land on the last word (the "payoff") smoothly.
+          var last = words[words.length - 1];
+          var incoming = showingA ? a : b;
+          var outgoing = showingA ? b : a;
+          incoming.textContent = last; incoming.style.opacity = '1';
+          outgoing.style.opacity = '0';
+        }
+      };
+    }
+
+    var letterMorph = makeLetterMorph(document.getElementById('intro-morph'));
+    var gooeyMorph = makeGooeyMorph(document.getElementById('intro-gooey'));
+
     var opening = false;
     function reveal() {
       if (opening) return;
       opening = true;
       try { sessionStorage.setItem(SEEN_KEY, '1'); } catch (_) {}
-      intro.classList.add('is-open');
-      document.body.classList.remove('intro-lock');
-      // Remove from the flow once the box has finished peeling apart
-      window.setTimeout(function () { intro.classList.add('is-done'); }, 1100);
+      // Fire both morphs at the moment of "click to open"
+      letterMorph.to();
+      gooeyMorph.settle();
+      // Give the morph a beat to play before the box peels apart
+      var peelDelay = reduceMotion ? 0 : 900;
+      window.setTimeout(function () {
+        intro.classList.add('is-open');
+        document.body.classList.remove('intro-lock');
+        // Remove from the flow once the box has finished peeling apart
+        window.setTimeout(function () { intro.classList.add('is-done'); }, 1100);
+      }, peelDelay);
     }
 
     // Wait for the visitor: click / tap anywhere, or any relevant key
