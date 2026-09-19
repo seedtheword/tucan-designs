@@ -111,42 +111,6 @@ a { color: inherit; text-decoration: none; }
 .intro__brand b { color: var(--gold); font-weight: 500; }
 .intro__brand .cursive-t { color: var(--gold-light); text-shadow: 0 0 16px rgba(201,165,77,0.6); }
 
-/* ── Effect A: letter morph (componentry/motion-primitives style) ──────
-   Each letter is its own span so shared letters can stay while others
-   fade + slide as one word morphs into the next. */
-.text-morph {
-  display: inline-flex; flex-wrap: wrap; justify-content: center;
-  white-space: pre-wrap;
-}
-.text-morph .tm-char {
-  display: inline-block; will-change: transform, opacity, filter;
-  transition: transform 0.55s var(--ease), opacity 0.45s var(--ease), filter 0.45s var(--ease);
-}
-.text-morph .tm-char.is-space { width: 0.32em; }
-/* Chars leaving: fade, drift up, blur slightly */
-.text-morph .tm-char.tm-out { opacity: 0; transform: translateY(-0.5em) scale(0.7); filter: blur(3px); }
-/* Chars entering start below + blurred, then settle (JS toggles tm-in off) */
-.text-morph .tm-char.tm-in { opacity: 0; transform: translateY(0.5em) scale(0.7); filter: blur(3px); }
-.text-morph .tm-char.gold { color: var(--gold); }
-
-/* ── Effect B: gooey blur morph (SVG threshold filter) ────────────────
-   Two layers cross-fade with blur; the #gooeyText filter thresholds them
-   together so they "melt" from one word into the next. */
-.intro__tagline {
-  font-family: var(--font-sans); font-size: 0.74rem; letter-spacing: 0.34em;
-  text-transform: uppercase; color: var(--gold-light);
-  margin: 0 0 1.7rem; min-height: 1.2em;
-}
-.gooey-morph {
-  position: relative; display: inline-grid; place-items: center;
-  filter: url(#gooeyText);
-}
-.gooey-morph > span {
-  grid-area: 1 / 1; transition: opacity 0.5s var(--ease), filter 0.5s var(--ease);
-}
-.gooey-morph .gooey-morph__b { opacity: 0; }
-.gooey-defs { position: absolute; pointer-events: none; }
-
 @keyframes introContentIn {
   from { opacity: 0; transform: translate(-50%, -46%); }
   to   { opacity: 1; transform: translate(-50%, -50%); }
@@ -182,10 +146,6 @@ body.intro-lock { overflow: hidden; }
   .intro__ribbon { stroke-dashoffset: 0; }
   .intro__content { opacity: 1; }
   .intro__half { transition: none; }
-  /* No motion: show the final words instantly, no letter/gooey transitions */
-  .text-morph .tm-char { transition: none; }
-  .gooey-morph > span { transition: none; }
-  .gooey-morph { filter: none; }
 }
 
 /* Mobile / narrow screens — make the ribbon bold across the width and
@@ -323,6 +283,21 @@ body.intro-lock .hero__scroll { animation-play-state: paused; }
   margin-bottom: 1.5rem; opacity: 0; animation: rise 1s var(--ease) 0.35s forwards;
 }
 .hero__title em { color: var(--gold); font-style: italic; }
+
+/* Morphing gold phrase in the hero headline (componentry-style text morph).
+   Each letter is its own span so shared letters stay while the rest fade
+   and slide as one phrase morphs into the next. */
+.hero__morph.text-morph { display: inline; font-style: italic; color: var(--gold); }
+.text-morph .tm-char {
+  display: inline-block; will-change: transform, opacity, filter;
+  transition: transform 0.5s var(--ease), opacity 0.4s var(--ease), filter 0.4s var(--ease);
+}
+.text-morph .tm-char.is-space { width: 0.28em; }
+/* Leaving: fade + drift up + slight blur */
+.text-morph .tm-char.tm-out { opacity: 0; transform: translateY(-0.45em) scale(0.8); filter: blur(3px); }
+/* Entering: start below + blurred, then settle (JS removes tm-in) */
+.text-morph .tm-char.tm-in { opacity: 0; transform: translateY(0.45em) scale(0.8); filter: blur(3px); }
+
 .hero__lead {
   font-size: 1.05rem; color: var(--text-muted); max-width: 480px; margin: 0 auto 2.5rem;
   line-height: 1.8; opacity: 0; animation: rise 1s var(--ease) 0.5s forwards;

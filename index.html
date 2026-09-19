@@ -109,36 +109,10 @@
     <div class="intro__logo" title="TuKan Designs">
       <span class="intro__mono-t">T</span>
     </div>
-
-    <!-- Effect A — letter morph: starts on a tagline, morphs into the brand
-         name when the visitor clicks to open. Populated by JS (data-* words). -->
-    <p class="intro__brand text-morph" id="intro-morph"
-       data-morph-from="Built to last" data-morph-to="TuKan Designs"
-       aria-label="TuKan Designs"></p>
-
-    <!-- Effect B — gooey blur morph: two words melt into each other through an
-         SVG threshold filter. Demo line under the brand. -->
-    <p class="intro__tagline gooey-morph" id="intro-gooey"
-       data-gooey-words="Handcrafted,Custom,Timeless,Yours"
-       aria-label="Handcrafted custom timeless pieces">
-      <span class="gooey-morph__a"></span>
-      <span class="gooey-morph__b"></span>
-    </p>
-
+    <p class="intro__brand"><span class="cursive-t">T</span>uKan <b>Designs</b></p>
     <button type="button" class="intro__enter" id="intro-enter">Click to open</button>
   </div>
 </div>
-<!-- SVG filter that powers the gooey (Effect B) text morph -->
-<svg class="gooey-defs" aria-hidden="true" width="0" height="0" focusable="false">
-  <defs>
-    <filter id="gooeyText">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="1.1" result="blur"/>
-      <feColorMatrix in="blur" mode="matrix"
-        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo"/>
-      <feBlend in="SourceGraphic" in2="goo"/>
-    </filter>
-  </defs>
-</svg>
 <noscript><style>.intro{display:none!important}</style></noscript>
 
 <!-- Seasonal sale bar (auto-shows the active promo; dismissible) -->
@@ -174,7 +148,9 @@
       <span class="hero__logo-mark hero__logo-mark--script">T</span>
     </div>
     <p class="eyebrow hero__eyebrow">Handcrafted &middot; Built to Order</p>
-    <h1 class="hero__title">Tables made to <em>last a lifetime.</em></h1>
+    <h1 class="hero__title">Tables made to <em class="hero__morph text-morph" id="hero-morph"
+        data-morph-words="last a lifetime.,last generations.,become heirlooms.,last a lifetime."
+        aria-label="last a lifetime">last a lifetime.</em></h1>
     <p class="hero__lead">Solid-wood craftsmanship, timeless design, and a finish that ages beautifully. Every TuKan Designs table is built by hand, to your specifications.</p>
     <div class="hero__ctas">
       <a href="#products" class="btn btn--gold">Shop Tables</a>
