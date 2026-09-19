@@ -287,12 +287,13 @@ body.intro-lock .hero__scroll { animation-play-state: paused; }
 /* Morphing gold phrase in the hero headline (componentry-style text morph).
    Each letter is its own span so shared letters stay while the rest fade
    and slide as one phrase morphs into the next. */
-.hero__morph.text-morph { display: inline; font-style: italic; color: var(--gold); }
+.hero__morph.text-morph { font-style: italic; color: var(--gold); }
+/* Each word is a nowrap group so lines break only at spaces, never mid-word */
+.text-morph .tm-word { display: inline-block; white-space: nowrap; }
 .text-morph .tm-char {
   display: inline-block; will-change: transform, opacity, filter;
   transition: transform 0.5s var(--ease), opacity 0.4s var(--ease), filter 0.4s var(--ease);
 }
-.text-morph .tm-char.is-space { width: 0.28em; }
 /* Leaving: fade + drift up + slight blur */
 .text-morph .tm-char.tm-out { opacity: 0; transform: translateY(-0.45em) scale(0.8); filter: blur(3px); }
 /* Entering: start below + blurred, then settle (JS removes tm-in) */

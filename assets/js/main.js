@@ -82,18 +82,31 @@
       var build = function () {
         el.textContent = '';
         el.setAttribute('aria-label', text);
-        for (var i = 0; i < text.length; i++) {
-          var ch = text[i];
-          var span = document.createElement('span');
-          span.className = 'tm-char' + (ch === ' ' ? ' is-space' : '');
-          span.textContent = ch === ' ' ? '\u00a0' : ch;
-          if (animate) {
-            span.classList.add('tm-in');
-            (function (s, d) {
-              window.setTimeout(function () { s.classList.remove('tm-in'); }, 30 + d * 30);
-            })(span, i);
+        // Split into words so wrapping happens ONLY at spaces (not mid-word).
+        // Each word is a nowrap group; letters inside animate individually.
+        var words = text.split(' ');
+        var charIndex = 0;
+        for (var w = 0; w < words.length; w++) {
+          var word = document.createElement('span');
+          word.className = 'tm-word';
+          for (var c = 0; c < words[w].length; c++) {
+            var span = document.createElement('span');
+            span.className = 'tm-char';
+            span.textContent = words[w][c];
+            if (animate) {
+              span.classList.add('tm-in');
+              (function (s, d) {
+                window.setTimeout(function () { s.classList.remove('tm-in'); }, 30 + d * 30);
+              })(span, charIndex);
+            }
+            word.appendChild(span);
+            charIndex++;
           }
-          el.appendChild(span);
+          el.appendChild(word);
+          // Real breakable space between words (not after the last one)
+          if (w < words.length - 1) {
+            el.appendChild(document.createTextNode(' '));
+          }
         }
       };
       if (animate) window.setTimeout(build, 300); else build();
